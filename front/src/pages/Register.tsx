@@ -8,6 +8,7 @@ import { useProvider, useAccount, useSigner, useContract } from "wagmi";
 import { ethers } from "ethers";
 import {useState} from "react"
 import { useNavigate } from 'react-router-dom';
+import abiERC20 from "../abiERC20.json"
 
 
 
@@ -124,7 +125,22 @@ export default function Register() {
 	// 	setAuthor( '' );
 	// };
 
+	const handleapprove = () => {
+		async function approve(deposit: number){
+			const factory = new ethers.Contract(
+				"0x8536Ccde8249e971021515097Ec2Cb44535E3fD8",
+				abiERC20,
+				signer!
+			);
 
+			const erc20= factory.connect(signer!)
+			const approve = await erc20.approve("0xd9369d77c799Bda1fc320764Ce228e9824181400", 111)
+			const tx= approve.wait
+			console.log(tx)
+		}
+
+		approve(222)
+		}
 
 	// sha256
 	async function encodeFile(files: any) {
@@ -144,6 +160,7 @@ export default function Register() {
 	}
 
 	const { data: signer, isError, isLoading } = useSigner();
+
 
 	async function contract2(values: {
 		fullName: any;
@@ -200,6 +217,7 @@ export default function Register() {
 
 	return (
 		<>
+
 			<form onSubmit={formik.handleSubmit}>
 				<Box
 					sx={{
@@ -693,6 +711,16 @@ export default function Register() {
 								}}
 							/>
 						</Grid>
+									<Button
+										variant="contained"
+										sx={{
+											backgroundColor: "#265700",
+											marginRight: "6em",
+										}}
+										onClick={handleapprove}
+									>
+										Approve to send Tokens
+									</Button>
 						<Grid item xs={5}></Grid>
 						<Grid item xs={10}>
 							<Button
@@ -713,15 +741,6 @@ export default function Register() {
 							</Button>
 						</Grid>
 						<Grid item xs={10}>
-							<Button
-								variant="contained"
-								sx={{
-									backgroundColor: "#265700",
-									marginRight: "6em",
-								}}
-							>
-								Cancelar
-							</Button>
 							{/* <Link to={"/save"}> */}
 								<Button
 									variant="contained"
