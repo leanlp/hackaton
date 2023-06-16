@@ -15,7 +15,7 @@ import abiERC20 from "../abiERC20.json"
 import { Link } from "react-router-dom";
 // import { Sidebar } from "../components/Sidebar";
 
-import { gql, useMutation } from '@apollo/client';
+// import { gql, useMutation } from '@apollo/client';
 
 
 
@@ -24,35 +24,35 @@ interface AddUserData {
 	addUser: User;
 }
 
-const ADD_USER = gql`
-  mutation CreateUser($fullName:String!, $email: String!,$phone: String!,$dni: Int!,$status: String!,$account: EVMAccountAddress!,$contractName: String!,$deposit: Int!,$rent:Int!,$transactionHash:String!,$file: String!,$streetName: String!,$streetNumber: Int!,$city:String!,$state: String!,$zipCode: Int!) {
-    createUser(  
-		user:{ fullName: $fullName, email: $email,phone:$phone,dni: $dni, status: $status,account: $account,contractName: $contractName, deposit: $deposit,rent: $rent,transactionHash: $transactionHash, file: $file,streetName: $streetName,streetNumber: $streetNumber,city: $city,state:$state,zipCode:$zipCode}
-		){
-    txHash
-    user {
-      id
-	fullName
-      email
-	  phone
-	  dni
-	  status
-	  account
-	  contractName
-	  deposit
-	  rent
-	  transactionHash
-	  file
-	  streetName
-	  streetNumber
-	  city
-	  state
-	  zipCode
-    }
-  }
+// const ADD_USER = gql`
+//   mutation CreateUser($fullName:String!, $email: String!,$phone: String!,$dni: Int!,$status: String!,$account: EVMAccountAddress!,$contractName: String!,$deposit: Int!,$rent:Int!,$transactionHash:String!,$file: String!,$streetName: String!,$streetNumber: Int!,$city:String!,$state: String!,$zipCode: Int!) {
+//     createUser(  
+// 		user:{ fullName: $fullName, email: $email,phone:$phone,dni: $dni, status: $status,account: $account,contractName: $contractName, deposit: $deposit,rent: $rent,transactionHash: $transactionHash, file: $file,streetName: $streetName,streetNumber: $streetNumber,city: $city,state:$state,zipCode:$zipCode}
+// 		){
+//     txHash
+//     user {
+//       id
+// 	fullName
+//       email
+// 	  phone
+// 	  dni
+// 	  status
+// 	  account
+// 	  contractName
+// 	  deposit
+// 	  rent
+// 	  transactionHash
+// 	  file
+// 	  streetName
+// 	  streetNumber
+// 	  city
+// 	  state
+// 	  zipCode
+//     }
+//   }
 	
-  }
-`;
+//   }
+// `;
 
 
 
@@ -78,7 +78,7 @@ const validationSchema: ObjectSchema<User> = object( {
 //REEMPLAZAR TODA LA INFO QUE VIENE DE WALLET DE HASH Y DE CONTRATO POR LOS DATOS DE ESTADO PARA MANDAR EL FORM
 export default function Register() {
 	const [hashPDF, setHash] = useState("");
-	const [addUser] = useMutation<AddUserData>( ADD_USER );
+	// const [addUser] = useMutation<AddUserData>( ADD_USER );
 	const { address } = useAccount();
 	let wallet = address;
 	const navigate = useNavigate();
@@ -106,7 +106,7 @@ export default function Register() {
 		onSubmit: ( values ) => {
 			const { fullName, email, phone, dni, status, account, contractName, deposit, rent, transactionHash, file, streetName, streetNumber, city, state, zipCode }= values 
 
-			addUser( { variables: { fullName, email, phone, dni, status, account, contractName, deposit, rent, transactionHash, file, streetName, streetNumber, city, state, zipCode } } )
+			// addUser( { variables: { fullName, email, phone, dni, status, account, contractName, deposit, rent, transactionHash, file, streetName, streetNumber, city, state, zipCode } } )
 
 
 			alert( JSON.stringify( values, null, 2 ) );
