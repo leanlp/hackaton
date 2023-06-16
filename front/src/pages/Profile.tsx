@@ -1,26 +1,26 @@
 import { User } from "../typings/index";
-import { gql, useQuery } from '@apollo/client';
+// import { gql, useQuery } from '@apollo/client';
 import { useEffect, useState } from "react";
 import UserProfile from '../components/UserProfile';
 
-const GET_TODOS = gql`
- query GetTodos{
-       allTodos {
-           id
-           title
-           description
-           priority
-           owner
-           tags
-           status
-       }
- }
-`;
+// const GET_TODOS = gql`
+//  query GetTodos{
+//        allTodos {
+//            id
+//            title
+//            description
+//            priority
+//            owner
+//            tags
+//            status
+//        }
+//  }
+// `;
 
 
 export default function Profile() {
 
-    const { loading, error, data } = useQuery( GET_TODOS );
+    // const { loading, error, data } = useQuery( GET_TODOS );
     const [user, setUser] = useState();
 
     // useEffect( () => {
