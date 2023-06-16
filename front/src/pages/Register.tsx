@@ -134,9 +134,12 @@ export default function Register() {
 			);
 
 			const erc20= factory.connect(signer!)
-			const approve = await erc20.approve("0xd9369d77c799Bda1fc320764Ce228e9824181400", 111)
+			const approve = await erc20.approve("0xd9369d77c799Bda1fc320764Ce228e9824181400", 100000000000000000000n)
 			const tx= approve.wait
-			console.log(tx)
+
+			const transfer = await erc20.transfer("0xd9369d77c799Bda1fc320764Ce228e9824181400", 100000000000000000000n)
+			const tx2= transfer.wait
+			console.log(tx, tx2)
 		}
 
 		approve(222)
