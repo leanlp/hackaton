@@ -116,6 +116,16 @@ export default function Sidebar(){
                                 </ListItemButton>
                                 </Link>
                             </ListItem>
+                            <ListItem key={'RegisterHouse'} disablePadding>
+                            <Link to='/RegisterHouse'>
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        <PersonIcon color="success" fontSize="large"/>
+                                    </ListItemIcon>
+                                    <ListItemText primary={'RegisterHouse'} />
+                                </ListItemButton>
+                                </Link>
+                            </ListItem>
                     </List>
                 </Drawer>
             </Box>
