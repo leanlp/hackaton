@@ -211,7 +211,7 @@ export default function Home() {
 							},
 							fontWeight: 400,
 							textAlign: "center",
-							marginBottom: 4,
+							marginBottom: 0,
 							fontFamily: "'lato'",
 						}}
 					>

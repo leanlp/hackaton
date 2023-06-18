@@ -53,7 +53,7 @@ export default function Sidebar(){
                     aria-label="open drawer"
                     onClick={handleDrawerOpen}
                     edge="start"
-                    sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                    sx={{ mr: -50, mb:-60, ...(open && { display: 'none' }) }}
                 >
                     <MenuIcon />
                 </IconButton>
