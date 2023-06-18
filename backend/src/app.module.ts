@@ -7,6 +7,9 @@ import { ProductsModule } from './products/products.module';
 import { AuthModule } from './auth/auth.module';
 import { multerConfig } from "../multer.config"
 import { MulterModule } from '@nestjs/platform-express';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+
 
 
 @Module({
@@ -16,6 +19,10 @@ import { MulterModule } from '@nestjs/platform-express';
       database: "./products.db", // Ruta a tu archivo de base de datos SQLite
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
+    }),
+    ServeStaticModule.forRoot({
+      serveRoot: '/uploads', 
+      rootPath: join(process.cwd(), 'uploads'),
     }),
     MulterModule.register(multerConfig),
     UsersModule,
