@@ -15,12 +15,12 @@ export class ProductsService {
     return await this.productRepository.find();
   }
 
-  async createProduct(createProductDto: CreateProductDto): Promise<Product> {
+  async createProduct(createProductDto: CreateProductDto, file: Express.Multer.File): Promise<Product> {
     const newProduct = new Product();
     newProduct.name = createProductDto.name;
     newProduct.description = createProductDto.description;
     newProduct.price = createProductDto.price;
-    newProduct.imageUrl = createProductDto.imageUrl;
+    newProduct.imageUrl = '/uploads/' + file.filename;
     newProduct.category = createProductDto.category;
     newProduct.seller = createProductDto.seller;
     newProduct.email = createProductDto.email;

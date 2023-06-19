@@ -5,6 +5,7 @@ import { ProductsController } from './products.controller';
 import { ProductsService } from './products.service';
 import { MulterModule } from '@nestjs/platform-express';
 import { multerConfig } from '../../multer.config';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Product]),  MulterModule.register(multerConfig)],
