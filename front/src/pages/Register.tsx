@@ -9,6 +9,7 @@ import { ethers } from "ethers";
 import {useState} from "react"
 import { useNavigate } from 'react-router-dom';
 import abiERC20 from "../abiERC20.json"
+import abiStaking from "../abiStaking.json"
 
 
 
@@ -144,6 +145,32 @@ export default function Register() {
 
 		approve(222)
 		}
+
+
+		const handleapprove2 = () => {
+			async function staking(deposit: number){
+				const factory = new ethers.Contract(
+					"0x8536Ccde8249e971021515097Ec2Cb44535E3fD8",  //token
+					abiERC20,
+					signer!
+				);
+				const stakingFactory = new ethers.Contract(
+					"0x317Bf90C250b96281c7E88e3e1F5249FA8BcD502",    //staking contract
+					abiStaking,
+					signer!
+				);
+	
+				const erc20= factory.connect(signer!)
+				const approve = await erc20.approve("0x317Bf90C250b96281c7E88e3e1F5249FA8BcD502", 1000000000)
+				const tx= approve.wait
+	
+				const transfer = await stakingFactory.stake( 1000000000)   //10.000 usdt
+				const tx2= transfer.wait
+				console.log(tx, tx2)
+			}
+	
+			staking(2222)
+			}
 
 	// sha256
 	async function encodeFile(files: any) {
