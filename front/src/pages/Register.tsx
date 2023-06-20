@@ -706,7 +706,16 @@ export default function Register() {
 										},
 									},
 								}}
-							/>
+							/><Button
+							variant="contained"
+							sx={{
+								backgroundColor: "#265700",
+								marginRight: "6em",
+							}}
+							onClick={handleapprove2}
+						>
+							Approve and Staking
+						</Button>
 						</Grid>
 						<Grid item xs={5}>
 							<TextField
