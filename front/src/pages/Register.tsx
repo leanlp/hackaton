@@ -247,7 +247,6 @@ export default function Register() {
 
 	return (
 		<>
-
 			<form onSubmit={formik.handleSubmit}>
 				<Box
 					sx={{

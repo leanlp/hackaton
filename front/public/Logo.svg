@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><style>.cls-1{fill:#9fe870;}.cls-2{fill:#265700;stroke:#265700;stroke-miterlimit:10;}</style></defs><g id="OBJECTS"><circle id="Ellipse_31" data-name="Ellipse 31" class="cls-1" cx="100" cy="100" r="100"/><path class="cls-2" d="M143.11,46.55l.74-.89L125.9,30.57l-.75.89L128,37.74,102.46,68.11l-1.92,2.28L76.87,98.47a30.56,30.56,0,1,0,9.22,6.63L109,77.49l1.92-2.28,12.9-15.35,12.62-15ZM64,143.63a17.52,17.52,0,1,1,17.52-17.52A17.54,17.54,0,0,1,64,143.63Z"/><polygon class="cls-2" points="150.29 51.07 149.54 51.96 151.95 57.5 123.81 59.86 123.01 90.79 135.43 101.23 136.17 100.34 133.61 95.44 134.34 63.01 157.74 61.51 162.74 63.05 163.49 62.16 150.29 51.07"/></g></svg>
+<svg width="1494" height="1494" viewBox="0 0 1494 1494" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_143_44)">
+<rect width="1494" height="1494" fill="white"/>
+<rect width="1494" height="1494" fill="#1B4650"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M639.327 362C514.33 362 413 463.33 413 588.327V1130.32H639.327V905.387L518.163 784.223C499.555 765.616 499.555 735.447 518.163 716.839L639.327 595.676V362Z" fill="#CFF153"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1080.07 362H722.712V592.889L832.121 702.298C975.967 656.087 1080.07 521.201 1080.07 362Z" fill="#CFF153"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M724.298 909.133V1132.25H1080.07C1080.07 974.796 979.57 841.022 839.755 792.653L724.298 909.133Z" fill="#CFF153"/>
+</g>
+<defs>
+<clipPath id="clip0_143_44">
+<rect width="1494" height="1494" fill="white"/>
+</clipPath>
+</defs>
+</svg>
