@@ -14,7 +14,7 @@ import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { arbitrum, mainnet, polygon, goerli, polygonMumbai } from "wagmi/chains";
 import RegisterUsers from "./pages/RegisterUsers";
 import RegisterHouse from "./pages/RegisterHouse";
-
+import { useAccount} from "wagmi";
 import Sidebar from "./components/Sidebar";
 import Profile from "./pages/Profile";
 
@@ -33,6 +33,8 @@ const wagmiClient = createClient({
 });
 const ethereumClient = new EthereumClient(wagmiClient, chains);
 
+
+
 function App() {
 
 	const [showSidebar,setShowSidebar] = useState<boolean>(true);
@@ -41,12 +43,12 @@ function App() {
 	//togglesidebar with useState
 	setShowSidebar(!showSidebar);
 	}
-
+	const { address, isConnecting, isDisconnected } = useAccount();
 	return (
 		<WagmiConfig client={wagmiClient}>
-		{showSidebar &&  <Sidebar />}
+		{address &&  <Sidebar />}
 			<Routes>
-				<Route path="/" element={<Home toggleSideBar={()=>handleToggleSideBar() } />} />
+				<Route path="/" element={<Home  />} />
 				<Route path="/register" element={<Register />} />
 				<Route path="/save" element={<SaveContract />} />
 				<Route path="/profile" element={<Profile/>} />

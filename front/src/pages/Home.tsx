@@ -11,11 +11,9 @@ import Sidebar from "../components/Sidebar";
 
 
 
-type Props = {
-    toggleSideBar: () => void;
-}
 
-export default function Home(props: Props) {
+
+export default function Home() {
 	// walletConnected keep track of whether the user's wallet is connected or not
 	const [walletConnected, setWalletConnected] = useState(false);
 	const [contractSent, setContractSent] = useState(false);
@@ -123,20 +121,17 @@ export default function Home(props: Props) {
 	];
 
 
-
-	const navigate = useNavigate();
+// aca fijarme el redirect
+	// const navigate = useNavigate();
 
 	// redirect
-	useEffect(() => {
-		if (address) {
-			navigate("/register");
-		}
-	}, [address]);
+	// useEffect(() => {
+	// 	if (address) {
+	// 		navigate("/register");
+	// 	}
+	// }, [address]);
 
 
-		useEffect(() => {
-		  props.toggleSideBar();
-		  },[]);
 	
 
 	// async function contract2() {
