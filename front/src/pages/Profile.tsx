@@ -20,8 +20,11 @@ import UserProfile from '../components/UserProfile';
 
 export default function Profile() {
 
+return(<div><h1>Profile</h1></div>)
+
+
     // const { loading, error, data } = useQuery( GET_TODOS );
-    const [user, setUser] = useState();
+    // const [user, setUser] = useState();
 
     // useEffect( () => {
     //     if ( data ) setTodos( data.allTodos );
@@ -32,16 +35,18 @@ export default function Profile() {
     // if ( error ) {
     //     return <p>Error : {error.message}</p>;
     // }
-    return {
-        // todos.filter( ( todo ) => todo.status === "ready" ).map( ( todo: Todo, index ) => (
-        //     <UserProfile key={todo.id}
-        //         todo={todo}
-        //         ownerAddress={ownerAddress}
-        //         setState={setTodos}
-        //         index={index}
-        //         updateState={update}
-        //         onUpdateTodo={onUpdateTodo} />
+    // return {
 
-        // ) );
-    };
+
+    //     // todos.filter( ( todo ) => todo.status === "ready" ).map( ( todo: Todo, index ) => (
+    //     //     <UserProfile key={todo.id}
+    //     //         todo={todo}
+    //     //         ownerAddress={ownerAddress}
+    //     //         setState={setTodos}
+    //     //         index={index}
+    //     //         updateState={update}
+    //     //         onUpdateTodo={onUpdateTodo} />
+
+    //     // ) );
+    // };
 }

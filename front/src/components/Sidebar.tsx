@@ -24,26 +24,16 @@ function HomeIcon(props: SvgIconProps) {
     );
 }
 
-const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-}));
+
 
 export default function Sidebar(){
 
     const theme = useTheme();
     const [open, setOpen] = useState(false);
 
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
+const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
+  };
 
     return(
         <>
@@ -51,30 +41,22 @@ export default function Sidebar(){
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"
-                    onClick={handleDrawerOpen}
-                    edge="start"
-                    sx={{ mr: -50, mb:-60, ...(open && { display: 'none' }) }}
+                    onClick={toggleDrawer(true)}
+                    // edge="start"
+                    // sx={{ mr: -50, mb:-60, ...(open && { display: 'none' }) }}
                 >
                     <MenuIcon />
                 </IconButton>
                 <Drawer
-                    sx={{
-                    width: 1300,
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
-                        width: 240,
-                        boxSizing: 'border-box',
-                        },
-                    }}
-                    variant="persistent"
+                    
+                    variant="temporary"
                     anchor="left"
                     open={open}
                 >
-                    <DrawerHeader>
-                        <IconButton onClick={handleDrawerClose}>
+
+                        <IconButton onClick={toggleDrawer(false)}>
                             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                         </IconButton>
-                    </DrawerHeader>
                     <List>
                             <ListItem key={'Home'} disablePadding>
                                 <Link to='/'>
@@ -132,3 +114,6 @@ export default function Sidebar(){
         </>
     )
 }
+
+   
+  

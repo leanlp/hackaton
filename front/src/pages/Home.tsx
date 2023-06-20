@@ -9,7 +9,13 @@ import { useProvider, useAccount, useSigner, useContract } from "wagmi";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 
-export default function Home() {
+
+
+type Props = {
+    toggleSideBar: () => void;
+}
+
+export default function Home(props: Props) {
 	// walletConnected keep track of whether the user's wallet is connected or not
 	const [walletConnected, setWalletConnected] = useState(false);
 	const [contractSent, setContractSent] = useState(false);
@@ -127,6 +133,12 @@ export default function Home() {
 		}
 	}, [address]);
 
+
+		useEffect(() => {
+		  props.toggleSideBar();
+		  },[]);
+	
+
 	// async function contract2() {
 	// 	const factory = new ethers.Contract(
 	// 		"0xB1D11a2b59bB6B0c5D61A2eE765ceb8779941b57",
@@ -153,6 +165,7 @@ export default function Home() {
 
 	return (
 		<>
+
 			<img src={city} style={{ position: "absolute", bottom: "0" }}></img>
 			<div style={{ display: "flex", justifyContent: "center" }}>
 				<Box
@@ -176,7 +189,6 @@ export default function Home() {
 							bottom: 850,
 						}}
 					>
-						<Sidebar />
 					</Box>
 					<Typography
 						variant="h1"
@@ -243,6 +255,7 @@ export default function Home() {
 					</Card>
 				</Box>
 			</div>
+		
 		</>
 	);
 }
