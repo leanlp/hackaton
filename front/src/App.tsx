@@ -14,8 +14,12 @@ import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { arbitrum, mainnet, polygon, goerli, polygonMumbai } from "wagmi/chains";
 import RegisterUsers from "./pages/RegisterUsers";
 import RegisterHouse from "./pages/RegisterHouse";
+
 import Sidebar from "./components/Sidebar";
 import Profile from "./pages/Profile";
+
+import ViewHouses from "./pages/ViewHouses";
+
 const chains = [polygonMumbai];
 // const chains = [arbitrum, mainnet, polygon, goerli, polygonMumbai];
 const projectId = import.meta.env.VITE_PROJECT_ID;
@@ -48,6 +52,7 @@ function App() {
 				<Route path="/profile" element={<Profile/>} />
 				<Route path="/RegisterUsers" element={<RegisterUsers />} />
 				<Route path="/RegisterHouse" element={<RegisterHouse />} />
+				<Route path="/ViewHouses" element={<ViewHouses />} />
 			</Routes>
 			<Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
 			
