@@ -22,6 +22,7 @@ function ViewHouses() {
     
    
     setProducts(data);
+    console.log(data)
   };
 
   return (
