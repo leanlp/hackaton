@@ -27,7 +27,7 @@ function RegisterUsers() {
   return (
     <Box component="form" onSubmit={handleSubmit} display="flex" flexDirection="column" maxWidth="300px" margin="0 auto">
       <TextField 
-        label="Name" 
+        label="Nombre completo" 
         value={name} 
         onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setName(e.target.value)} 
         margin="normal"
@@ -39,14 +39,14 @@ function RegisterUsers() {
         margin="normal"
       />
       <TextField 
-        label="Password" 
+        label="contraseña" 
         type="password"
         value={password} 
         onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)} 
         margin="normal"
       />
       <Button type="submit" variant="contained" color="primary" style={{ marginTop: '20px' }}>
-        Submit
+        Enviar
       </Button>
     </Box>
   );

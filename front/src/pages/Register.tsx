@@ -275,7 +275,12 @@ export default function Register() {
 						display: "flex",
 						justifyContent: "center",
 						flexDirection: "column",
-						marginLeft: "8em",
+						marginLeft: {
+							lg: '8em',
+							md: '6em',
+							sm: '4em',
+							xs: '2em',
+						},
 					}}
 				>
 					<Typography
@@ -737,7 +742,7 @@ export default function Register() {
 						<Grid item xs={10} >
 							<Typography>Contrato</Typography>
 						</Grid>
-						<Grid item xs={4}>
+						<Grid item xs={5}>
 							<TextField
 								placeholder="Tipo de contrato"
 								id="contractName"
@@ -772,7 +777,8 @@ export default function Register() {
 								}}
 							/>
 						</Grid>
-						<Grid item xs={6} display={"flex"} flexDirection='row' alignItems='center' marginBottom='1em'>
+						<Grid item xs={5} ></Grid>
+						<Grid item xs={5} display={"flex"} flexDirection='row' alignItems='center'>
 							<TextField
 								placeholder="Garantía"
 								id="deposit"
@@ -820,17 +826,25 @@ export default function Register() {
 										  },
 									},
 								}}
-							/><Button
+							/>
+						</Grid>
+						<Grid item xs={5} >
+						<Button
 							variant="contained"
 							sx={{
 								backgroundColor: "#265700",
-								height:'50px',
+								height:'40px',
 								marginLeft:'2em',
-								fontSize:'12px',
+								fontSize:{
+									lg:12,
+									md: 10,
+									sm: 8,
+									xs: 6,
+								},
 							}}
 							onClick={handleapprove2}
 						>
-							Approve and Staking
+							Aceptar Staking
 						</Button>
 						</Grid>
 						<Grid item xs={5} display='flex' flexDirection='row' alignItems='center'>
@@ -881,21 +895,28 @@ export default function Register() {
 										  },
 									},
 								}}
-							/>
-							<Button
-										variant="contained"
-										sx={{
-											backgroundColor: "#265700",
-											height:'50px',
-											fontSize:'12px',
-											marginLeft:'2em'
-										}}
-										onClick={handleapprove}
-									>
-										Approve to send Tokens
-									</Button>
+							/>	
 						</Grid>
-									
+						<Grid item xs={5} >
+						<Button
+						variant="contained"
+						sx={{
+							backgroundColor: "#265700",
+							height:'50px',
+
+							fontSize:{
+							lg:12,
+							md: 10,
+							sm: 8,
+							xs: 6,
+							},
+							marginLeft:'2em'
+							}}
+							onClick={handleapprove}
+							>
+						Aceptar el envio de Tokens
+						</Button>
+						</Grid>
 						<Grid item xs={5}></Grid>
 						<Grid item xs={10}>
 							<Button
@@ -924,7 +945,12 @@ export default function Register() {
 									sx={{
 										backgroundColor: "#265700",
 										height:'50px', 
-										fontSize:'12px'
+										fontSize:{
+											lg:12,
+											md: 10,
+											sm: 8,
+											xs: 6,
+										},
 									}}
 								>
 									Siguiente

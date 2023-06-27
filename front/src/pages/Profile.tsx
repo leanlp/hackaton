@@ -20,7 +20,7 @@ import UserProfile from '../components/UserProfile';
 
 export default function Profile() {
 
-return(<div><h1>Profile</h1></div>)
+return(<UserProfile/>)
 
 
     // const { loading, error, data } = useQuery( GET_TODOS );

@@ -94,7 +94,7 @@ const toggleDrawer = (newOpen: boolean) => () => {
                                     <ListItemIcon>
                                         <PersonIcon color="success" fontSize="large"/>
                                     </ListItemIcon>
-                                    <ListItemText primary={'RegisterUsers'} />
+                                    <ListItemText primary={'Registra tu usuario'} />
                                 </ListItemButton>
                                 </Link>
                             </ListItem>
@@ -104,7 +104,7 @@ const toggleDrawer = (newOpen: boolean) => () => {
                                     <ListItemIcon>
                                         <PersonIcon color="success" fontSize="large"/>
                                     </ListItemIcon>
-                                    <ListItemText primary={'RegisterHouse'} />
+                                    <ListItemText primary={'Registra tu inmueble'} />
                                 </ListItemButton>
                                 </Link>
                             </ListItem>
@@ -114,7 +114,7 @@ const toggleDrawer = (newOpen: boolean) => () => {
                                     <ListItemIcon>
                                         <PersonIcon color="success" fontSize="large"/>
                                     </ListItemIcon>
-                                    <ListItemText primary={'viewHouses'} />
+                                    <ListItemText primary={'Inmuebles disponibles'} />
                                 </ListItemButton>
                                 </Link>
                             </ListItem>
