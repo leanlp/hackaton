@@ -15,6 +15,7 @@ import abiStaking from "../abiStaking.json"
 
 
 import { Link } from "react-router-dom";
+import { Margin } from "@mui/icons-material";
 // import { Sidebar } from "../components/Sidebar";
 
 // import { gql, useMutation } from '@apollo/client';
@@ -318,7 +319,7 @@ export default function Register() {
 						evaluación de sus términos y condiciones. Por favor, asegúrese de
 						que esté en formato PDF.
 					</Typography>
-					<Typography>Datos del Usuario</Typography>
+					<Typography marginBottom='2em'>Datos del Usuario</Typography>
 				</Box>
 				<Box
 					sx={{
@@ -536,7 +537,7 @@ export default function Register() {
 								}}
 							/>
 						</Grid>
-						<Grid item xs={10}>
+						<Grid item xs={10} marginBottom='1em' marginTop='2em'>
 							<Typography>Dirección</Typography>
 						</Grid>
 						<Grid item xs={5}>
@@ -684,7 +685,7 @@ export default function Register() {
 								}}
 							/>
 						</Grid>
-						<Grid item xs={5}>
+						<Grid item xs={5} marginBottom='2em'>
 							<TextField
 								placeholder="Código Postal"
 								id="zipCode"
@@ -731,17 +732,16 @@ export default function Register() {
 								}}
 							/>
 						</Grid>
-						<Grid item xs={5}></Grid>
+						<Grid item xs={5} ></Grid>
 
-						<Grid item xs={10}>
+						<Grid item xs={10} >
 							<Typography>Contrato</Typography>
 						</Grid>
-						<Grid item xs={5}>
+						<Grid item xs={4}>
 							<TextField
 								placeholder="Tipo de contrato"
 								id="contractName"
 								name="contractName"
-								defaultValue="Tipo de contrato"
 								onChange={handleFormChange}
 								label='Tipo de contrato'
 								required
@@ -772,7 +772,7 @@ export default function Register() {
 								}}
 							/>
 						</Grid>
-						<Grid item xs={5}>
+						<Grid item xs={6} display={"flex"} flexDirection='row' alignItems='center' marginBottom='1em'>
 							<TextField
 								placeholder="Garantía"
 								id="deposit"
@@ -824,14 +824,16 @@ export default function Register() {
 							variant="contained"
 							sx={{
 								backgroundColor: "#265700",
-								marginRight: "6em",
+								height:'50px',
+								marginLeft:'2em',
+								fontSize:'12px',
 							}}
 							onClick={handleapprove2}
 						>
 							Approve and Staking
 						</Button>
 						</Grid>
-						<Grid item xs={5}>
+						<Grid item xs={5} display='flex' flexDirection='row' alignItems='center'>
 							<TextField
 								placeholder="Monto de alquiler"
 								id="rent"
@@ -880,17 +882,20 @@ export default function Register() {
 									},
 								}}
 							/>
-						</Grid>
-									<Button
+							<Button
 										variant="contained"
 										sx={{
 											backgroundColor: "#265700",
-											marginRight: "6em",
+											height:'50px',
+											fontSize:'12px',
+											marginLeft:'2em'
 										}}
 										onClick={handleapprove}
 									>
 										Approve to send Tokens
 									</Button>
+						</Grid>
+									
 						<Grid item xs={5}></Grid>
 						<Grid item xs={10}>
 							<Button
@@ -910,13 +915,16 @@ export default function Register() {
 								/>
 							</Button>
 						</Grid>
-						<Grid item xs={10}>
+						<Grid item xs={10} marginBottom='2em'>
 							{/* <Link to={"/save"}> */}
 								<Button
 									variant="contained"
 									type="submit"
+									
 									sx={{
 										backgroundColor: "#265700",
+										height:'50px', 
+										fontSize:'12px'
 									}}
 								>
 									Siguiente
