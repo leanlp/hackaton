@@ -119,8 +119,25 @@ export default function Home() {
 			type: "function",
 		},
 	];
-
-
+//traigo el array ahora, para que inicie el servidor backend apenas se cargue la web, asi disminuimos el lag
+	useEffect(() => {
+		fetchProducts();
+	  }, []);
+	
+	  
+	
+	  const fetchProducts = async () => {
+		const response = await fetch('https://keywisebackend.onrender.com/products', {
+		  method: 'GET',
+		  headers: {
+			'Accept': '*/*'
+		  },
+		});
+		
+		const data = await response.json();
+	
+		console.log(data)
+	  };
 // aca fijarme el redirect
 	// const navigate = useNavigate();
 
