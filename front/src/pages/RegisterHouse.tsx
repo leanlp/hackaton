@@ -45,25 +45,25 @@ function RegisterHouse() {
   return (
     <Box component="form" onSubmit={handleSubmit} display="flex" flexDirection="column" maxWidth="300px" margin="0 auto">
       <TextField 
-  label="Description" 
+  label="Descripción" 
   value={description} 
   onChange={e => setDescription(e.target.value)} 
   margin="normal"
 />
 <TextField 
-  label="Price" 
+  label="Precio" 
   value={price} 
   onChange={e => setPrice(e.target.value)} 
   margin="normal"
 />
 <TextField 
-  label="Category" 
+  label="Categoría" 
   value={category} 
   onChange={e => setCategory(e.target.value)} 
   margin="normal"
 />
 <TextField 
-  label="Seller" 
+  label="Propietario" 
   value={seller} 
   onChange={e => setSeller(e.target.value)} 
   margin="normal"
@@ -73,7 +73,7 @@ function RegisterHouse() {
   onChange={handleFileChange}
 />
       <Button type="submit" variant="contained" color="primary" style={{ marginTop: '20px' }}>
-        Submit
+        Enviar
       </Button>
     </Box>
   );
