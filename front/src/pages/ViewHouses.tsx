@@ -17,7 +17,7 @@ function ViewHouses() {
   
 
   const fetchProducts = async () => {
-    const response = await fetch('https://keywisebackend.onrender.com/products', {
+    const response = await fetch('https://api.keywise.com.ar/products', {
       method: 'GET',
       headers: {
         'Accept': '*/*'
