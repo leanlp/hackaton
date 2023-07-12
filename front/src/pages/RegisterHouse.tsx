@@ -29,7 +29,7 @@ function RegisterHouse() {
       formData.append('image', file);
     }
   
-    const response = await fetch('https://keywisebackend.onrender.com/products', {
+    const response = await fetch('https://api.keywise.com.ar/products', {
       method: 'POST',
       body: formData,
     });

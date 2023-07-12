@@ -8,7 +8,7 @@ function RegisterUsers() {
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const response = await fetch('https://keywisebackend.onrender.com/users', {
+    const response = await fetch('https://api.keywise.com.ar/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
