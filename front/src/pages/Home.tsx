@@ -174,7 +174,7 @@ export default function Home() {
       <Box
         sx={{
           background:
-            "linear-gradient(90deg, rgba(26,30,52,1) 100%, rgba(27,70,80,1) 100%, rgba(194,183,237,1) 100%);",
+            "linear-gradient(to bottom right, #34344f, #3a3c57, #2c344c, #2c2c44, #1c2436, #2c2c4c, #24243c, #1c1c34)",
           height: "100vh",
         }}>
         <img src={KHome}></img>
@@ -189,15 +189,36 @@ export default function Home() {
             color="#C2B7ED"
             fontFamily="Sora"
             fontWeight="bold"
-            fontSize="200px"
-            marginBottom={10}>
+            marginBottom={10}
+            variant="h1"
+            sx={{
+              fontSize: {
+                lg: 200,
+                md: 90,
+                sm: 70,
+                xs: 50,
+              },
+            }}>
             Keywise
           </Typography>
           <Typography
             color="#60D086"
-            fontSize="30px"
             fontFamily="Roboto"
-            marginBottom={8}>
+            marginBottom={8}
+            sx={{
+              fontSize: {
+                lg: 30,
+                md: 28,
+                sm: 24,
+                xs: 20,
+              },
+              maxWidth: {
+                lg: 600,
+                md: 500,
+                sm: 400,
+                xs: 300,
+              },
+            }}>
             Tu garantía de alquiler, en crypto.
           </Typography>
           <Web3Button />
