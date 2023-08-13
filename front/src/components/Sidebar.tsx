@@ -12,21 +12,17 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
-import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
-import PersonIcon from "@mui/icons-material/Person";
-
-function HomeIcon(props: SvgIconProps) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </SvgIcon>
-  );
-}
+import home from "../assets/home.png";
+import contract from "../assets/contract.png";
+import account_circle from "../assets/account_circle.png";
+import realState from "../assets/real_estate_agent.png";
+import person from "../assets/person_add.png";
+import homeHealth from "../assets/home_health.png";
 
 export default function Sidebar() {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState("");
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -63,62 +59,130 @@ export default function Sidebar() {
               <ChevronRightIcon />
             )}
           </IconButton>
-          <List>
-            <ListItem key={"Home"} disablePadding>
+          <List
+            sx={{
+              "& .MuiButtonBase-root": {
+                color: "white",
+                fontFamily: "Roboto",
+              },
+              "& .MuiSvgIcon-root": {
+                color: "white",
+              },
+
+              "& .MuiListItemButton-root:hover": {
+                minWidth: "250px",
+              },
+            }}>
+            <ListItem
+              key={"Home"}
+              disablePadding
+              color="white"
+              sx={{
+                "& .Mui-selected": {
+                  color: "#CFF153",
+                },
+              }}>
               <Link to="/">
-                <ListItemButton>
+                <ListItemButton
+                  selected={selected === "home"}
+                  onClick={() => setSelected("home")}>
                   <ListItemIcon>
-                    <HomeIcon color="success" fontSize="large" />
+                    <img src={home} alt="home"></img>
                   </ListItemIcon>
                   <ListItemText primary={"Home"} />
                 </ListItemButton>
               </Link>
             </ListItem>
-            <ListItem key={"Mis Contratos"} disablePadding>
+            <ListItem
+              sx={{
+                "& .Mui-selected": {
+                  color: "#CFF153",
+                },
+              }}
+              key={"Mis Contratos"}
+              disablePadding>
               <Link to="/register">
-                <ListItemButton>
+                <ListItemButton
+                  selected={selected === "contract"}
+                  onClick={() => setSelected("contract")}>
                   <ListItemIcon>
-                    <ReceiptLongIcon color="success" fontSize="large" />
+                    <img src={contract} alt="contract"></img>
                   </ListItemIcon>
                   <ListItemText primary={"Mis Contratos"} />
                 </ListItemButton>
               </Link>
             </ListItem>
-            <ListItem key={"Perfil"} disablePadding>
+            <ListItem
+              key={"Perfil"}
+              disablePadding
+              sx={{
+                "& .Mui-selected": {
+                  color: "#CFF153",
+                },
+              }}>
               <Link to="/profile">
-                <ListItemButton>
+                <ListItemButton
+                  selected={selected === "profile"}
+                  onClick={() => setSelected("profile")}>
                   <ListItemIcon>
-                    <PersonIcon color="success" fontSize="large" />
+                    <img src={account_circle} alt="profile"></img>
                   </ListItemIcon>
                   <ListItemText primary={"Perfil"} />
                 </ListItemButton>
               </Link>
             </ListItem>
-            <ListItem key={"RegisterUsers"} disablePadding>
+            <ListItem
+              key={"RegisterUsers"}
+              disablePadding
+              sx={{
+                "& .Mui-selected": {
+                  color: "#CFF153",
+                },
+              }}>
               <Link to="/RegisterUsers">
-                <ListItemButton>
+                <ListItemButton
+                  selected={selected === "user"}
+                  onClick={() => setSelected("user")}>
                   <ListItemIcon>
-                    <PersonIcon color="success" fontSize="large" />
+                    <img src={person} alt="user"></img>
                   </ListItemIcon>
                   <ListItemText primary={"Registra tu usuario"} />
                 </ListItemButton>
               </Link>
             </ListItem>
-            <ListItem key={"RegisterHouse"} disablePadding>
+            <ListItem
+              key={"RegisterHouse"}
+              disablePadding
+              sx={{
+                "& .Mui-selected": {
+                  color: "#CFF153",
+                },
+              }}>
               <Link to="/RegisterHouse">
-                <ListItemButton>
+                <ListItemButton
+                  selected={selected === "register"}
+                  onClick={() => setSelected("register")}>
                   <ListItemIcon>
-                    <PersonIcon color="success" fontSize="large" />
+                    <img src={homeHealth} alt="register"></img>
                   </ListItemIcon>
                   <ListItemText primary={"Registra tu inmueble"} />
                 </ListItemButton>
               </Link>
             </ListItem>
-            <ListItem key={"viewHouses"} disablePadding>
+            <ListItem
+              key={"viewHouses"}
+              disablePadding
+              sx={{
+                "& .Mui-selected": {
+                  color: "#CFF153",
+                },
+              }}>
               <Link to="/viewHouses">
-                <ListItemButton>
+                <ListItemButton
+                  selected={selected === "viewHouses"}
+                  onClick={() => setSelected("viewHouses")}>
                   <ListItemIcon>
-                    <PersonIcon color="success" fontSize="large" />
+                    <img src={realState} alt="ViewHouses"></img>
                   </ListItemIcon>
                   <ListItemText primary={"Inmuebles disponibles"} />
                 </ListItemButton>
