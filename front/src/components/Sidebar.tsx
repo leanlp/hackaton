@@ -80,6 +80,7 @@ export default function Sidebar() {
               sx={{
                 "& .Mui-selected": {
                   color: "#CFF153",
+                  minWidth: "250px",
                 },
               }}>
               <Link to="/">
@@ -97,6 +98,7 @@ export default function Sidebar() {
               sx={{
                 "& .Mui-selected": {
                   color: "#CFF153",
+                  minWidth: "250px",
                 },
               }}
               key={"Mis Contratos"}
@@ -118,6 +120,7 @@ export default function Sidebar() {
               sx={{
                 "& .Mui-selected": {
                   color: "#CFF153",
+                  minWidth: "250px",
                 },
               }}>
               <Link to="/profile">
@@ -137,6 +140,7 @@ export default function Sidebar() {
               sx={{
                 "& .Mui-selected": {
                   color: "#CFF153",
+                  minWidth: "250px",
                 },
               }}>
               <Link to="/RegisterUsers">
@@ -156,6 +160,7 @@ export default function Sidebar() {
               sx={{
                 "& .Mui-selected": {
                   color: "#CFF153",
+                  minWidth: "250px",
                 },
               }}>
               <Link to="/RegisterHouse">
@@ -175,6 +180,7 @@ export default function Sidebar() {
               sx={{
                 "& .Mui-selected": {
                   color: "#CFF153",
+                  minWidth: "250px",
                 },
               }}>
               <Link to="/viewHouses">
