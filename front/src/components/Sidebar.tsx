@@ -18,6 +18,7 @@ import account_circle from "../assets/account_circle.png";
 import realState from "../assets/real_estate_agent.png";
 import person from "../assets/person_add.png";
 import homeHealth from "../assets/home_health.png";
+import iconMenu from "../assets/iconMenu.png";
 
 export default function Sidebar() {
   const theme = useTheme();
@@ -43,7 +44,7 @@ export default function Sidebar() {
           // edge="start"
           // sx={{ mr: -50, mb:-60, ...(open && { display: 'none' }) }}
         >
-          <MenuIcon />
+          <img src={iconMenu} alt="iconMenu"></img>
         </IconButton>
         <Drawer
           variant="temporary"
@@ -54,7 +55,7 @@ export default function Sidebar() {
           }}>
           <IconButton onClick={toggleDrawer(false)}>
             {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
+              <ChevronLeftIcon sx={{ color: "#CFF153" }} />
             ) : (
               <ChevronRightIcon />
             )}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, TextField, Box } from "@mui/material";
+import { Button, TextField, Box, Typography } from "@mui/material";
 
 function RegisterHouse() {
   const [location, setLocation] = useState("");
@@ -53,48 +53,155 @@ function RegisterHouse() {
       flexDirection="column"
       maxWidth="300px"
       margin="0 auto">
+      <Typography
+        fontSize={20}
+        fontFamily="Lato"
+        marginTop="8em"
+        marginBottom="2em">
+        Registro del Inmueble
+      </Typography>
       <TextField
         label="Localidad"
         value={location}
         onChange={(e) => setLocation(e.target.value)}
         margin="normal"
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "10px",
+            backgroundColor: "#F3F3F3",
+            "& fieldset": {
+              borderColor: "transparent",
+            },
+            "&:hover fieldset": {
+              borderColor: "#c2c6f3",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#a4abf3",
+            },
+          },
+        }}
       />
       <TextField
         label="Descripción"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         margin="normal"
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "10px",
+            backgroundColor: "#F3F3F3",
+            "& fieldset": {
+              borderColor: "transparent",
+            },
+            "&:hover fieldset": {
+              borderColor: "#c2c6f3",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#a4abf3",
+            },
+          },
+        }}
       />
       <TextField
         label="Precio"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
         margin="normal"
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "10px",
+            backgroundColor: "#F3F3F3",
+            "& fieldset": {
+              borderColor: "transparent",
+            },
+            "&:hover fieldset": {
+              borderColor: "#c2c6f3",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#a4abf3",
+            },
+          },
+        }}
       />
       <TextField
         label="Categoría"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
         margin="normal"
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "10px",
+            backgroundColor: "#F3F3F3",
+            "& fieldset": {
+              borderColor: "transparent",
+            },
+            "&:hover fieldset": {
+              borderColor: "#c2c6f3",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#a4abf3",
+            },
+          },
+        }}
       />
       <TextField
         label="Propietario"
         value={seller}
         onChange={(e) => setSeller(e.target.value)}
         margin="normal"
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "10px",
+            backgroundColor: "#F3F3F3",
+            "& fieldset": {
+              borderColor: "transparent",
+            },
+            "&:hover fieldset": {
+              borderColor: "#c2c6f3",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#a4abf3",
+            },
+          },
+        }}
       />
       <TextField
         label="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         margin="normal"
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "10px",
+            backgroundColor: "#F3F3F3",
+            "& fieldset": {
+              borderColor: "transparent",
+            },
+            "&:hover fieldset": {
+              borderColor: "#c2c6f3",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#a4abf3",
+            },
+          },
+        }}
       />
       <input type="file" onChange={handleFileChange} />
       <Button
         type="submit"
         variant="contained"
         color="primary"
-        style={{ marginTop: "20px" }}>
+        style={{ marginTop: "20px" }}
+        sx={{
+          marginBottom: "4em",
+          backgroundColor: "#C2B7ED",
+          color: "black",
+          "&.MuiButton-root": {
+            "&:hover": {
+              background: "#BDADED",
+            },
+          },
+        }}>
         Enviar
       </Button>
     </Box>
