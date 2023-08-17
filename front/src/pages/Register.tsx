@@ -186,6 +186,31 @@ export default function Register() {
     staking(2222);
   };
 
+  const handleapprove3 = () => {
+	async function newSmartWallet(wallet: string){
+	  try {
+		const response = await fetch("http://localhost:3005/smartwallet/run", {
+		  method: 'POST',
+		  headers: {
+			'Content-Type': 'application/json'
+		  },
+		  body: JSON.stringify({ param1: wallet }), 
+		});
+		
+		if (!response.ok) {
+		  throw new Error(`API request failed with status ${response.status}: ${response.statusText}`);
+		}
+  
+		const data = await response.json();
+console.log(data.walletAddress); // log the returned wallet address
+} catch (error) {
+console.error("Error fetching data:", error);
+}
+	}
+  
+	newSmartWallet(wallet!);
+  }
+
   // sha256
   async function encodeFile(files: any) {
     const fileData = new Uint8Array(await files.arrayBuffer());
@@ -828,7 +853,29 @@ export default function Register() {
               />
             </Grid>
             <Grid item xs={5}>
-              <Button
+			<Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#C2B7ED",
+                  color: "black",
+                  "&.MuiButton-root": {
+                    "&:hover": {
+                      background: "#BDADED",
+                    },
+                  },
+                  height: "40px",
+                  marginLeft: "2em",
+                  fontSize: {
+                    lg: 12,
+                    md: 10,
+                    sm: 8,
+                    xs: 6,
+                  },
+                }}
+                onClick={handleapprove3}>
+                Quiero una nueva Smart Wallet con Selft-recovery
+              </Button>
+			  <Button
                 variant="contained"
                 sx={{
                   backgroundColor: "#C2B7ED",
