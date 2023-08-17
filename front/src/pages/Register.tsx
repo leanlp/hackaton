@@ -209,7 +209,7 @@ console.log("smartWallet", smartWallet)
 		}
   
 		const data = await response.json();
-		setSmartWallet(data.walletAddress); 
+		setSmartWallet(String(data.walletAddress));
         console.log(data.walletAddress); // log the returned wallet address
 } catch (error) {
 console.error("Error fetching data:", error);
