@@ -131,8 +131,8 @@ export default function Register() {
     alert(JSON.stringify(form, null, 2));
     contract2({ ...form }, hashPDF);
   };
-
-  const handleapprove = () => {
+let smartWallet
+  const handleapprove = (smartWallet: any) => {
     async function approve(deposit: number) {
       const factory = new ethers.Contract(
         "0x8536Ccde8249e971021515097Ec2Cb44535E3fD8",
@@ -142,20 +142,20 @@ export default function Register() {
 
       const erc20 = factory.connect(signer!);
       const approve = await erc20.approve(
-        "0xd9369d77c799Bda1fc320764Ce228e9824181400",
+        smartWallet,
         100000000000000000000n
       );
       const tx = approve.wait;
 
       const transfer = await erc20.transfer(
-        "0xd9369d77c799Bda1fc320764Ce228e9824181400",
-        100000000000000000000n
+        smartWallet,
+        100000n
       );
       const tx2 = transfer.wait;
       console.log(tx, tx2);
     }
 
-    approve(222);
+    approve(smartWallet);
   };
 
   const handleapprove2 = () => {
@@ -202,7 +202,8 @@ export default function Register() {
 		}
   
 		const data = await response.json();
-console.log(data.walletAddress); // log the returned wallet address
+		let smartWallet = data.walletAddress
+        console.log(data.walletAddress); // log the returned wallet address
 } catch (error) {
 console.error("Error fetching data:", error);
 }
@@ -874,6 +875,29 @@ console.error("Error fetching data:", error);
                 }}
                 onClick={handleapprove3}>
                 Quiero una nueva Smart Wallet con Selft-recovery
+              </Button>
+			  <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#C2B7ED",
+                  color: "black",
+                  "&.MuiButton-root": {
+                    "&:hover": {
+                      background: "#BDADED",
+                    },
+                  },
+                  height: "50px",
+
+                  fontSize: {
+                    lg: 12,
+                    md: 10,
+                    sm: 8,
+                    xs: 6,
+                  },
+                  marginLeft: "2em",
+                }}
+                onClick={handleapprove}>
+                Enviar USDT a la nueva Smart Wallet
               </Button>
 			  <Button
                 variant="contained"
