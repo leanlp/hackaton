@@ -20,7 +20,7 @@ import abiERC20 from "../abiERC20.json";
 import abiStaking from "../abiStaking.json";
 
 import { Link } from "react-router-dom";
-import { Margin } from "@mui/icons-material";
+import { Directions, Margin } from "@mui/icons-material";
 // import { Sidebar } from "../components/Sidebar";
 
 // import { gql, useMutation } from '@apollo/client';
@@ -98,12 +98,14 @@ export default function Register() {
     state: "",
     zipCode: 0,
   });
-  const [smartWallet, setSmartWallet] = useState<string | null>("0xcd67a4b699138Ec8A0990309970e098871f46c89");
+  const [smartWallet, setSmartWallet] = useState<string | null>(
+    "0xcd67a4b699138Ec8A0990309970e098871f46c89"
+  );
   useEffect(() => {
     if (smartWallet) {
-        console.log("Received Wallet Address:", smartWallet);
+      console.log("Received Wallet Address:", smartWallet);
     }
-}, [smartWallet]);
+  }, [smartWallet]);
   const [hashPDF, setHash] = useState("");
   // const [addUser] = useMutation<AddUserData>( ADD_USER );
   const { address } = useAccount();
@@ -140,23 +142,16 @@ export default function Register() {
   const handleapprove = (smartWallet: any) => {
     async function approve(deposit: number) {
       const factory = new ethers.Contract(
-        "0xef9ccA0D749A362AAaEbaaC1e7434D861153F51d",  //usdtMumbai
+        "0xef9ccA0D749A362AAaEbaaC1e7434D861153F51d", //usdtMumbai
         abiERC20,
         signer!
       );
 
       const erc20 = factory.connect(signer!);
-      const approve = await erc20.approve(
-        
-		smartWallet,
-        100000
-      );
+      const approve = await erc20.approve(smartWallet, 100000);
       const tx = approve.wait;
-console.log("smartWallet", smartWallet)
-      const transfer = await erc20.transfer(
-        smartWallet,
-        100000
-      );
+      console.log("smartWallet", smartWallet);
+      const transfer = await erc20.transfer(smartWallet, 100000);
 
       const tx2 = transfer.wait;
       console.log(tx, tx2);
@@ -185,7 +180,7 @@ console.log("smartWallet", smartWallet)
       );
       const tx = approve.wait;
 
-      const transfer = await stakingFactory.stake(100000); 
+      const transfer = await stakingFactory.stake(100000);
       const tx2 = transfer.wait;
       console.log(tx, tx2);
     }
@@ -194,6 +189,34 @@ console.log("smartWallet", smartWallet)
   };
 
   const handleapprove3 = () => {
+<<<<<<< HEAD
+    async function newSmartWallet(wallet: string) {
+      try {
+        const response = await fetch("http://localhost:3005/smartwallet/run", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ param1: wallet }),
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            `API request failed with status ${response.status}: ${response.statusText}`
+          );
+        }
+
+        const data = await response.json();
+        setSmartWallet(data.walletAddress.toString());
+        console.log(data.walletAddress.toString()); // log the returned wallet address
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    newSmartWallet(wallet!);
+  };
+=======
 	async function newSmartWallet(wallet: string){
 	  try {
 		const response = await fetch("http://localhost:3005/smartwallet/run", {
@@ -218,6 +241,7 @@ console.error("Error fetching data:", error);
   
 	newSmartWallet(wallet!);
   }
+>>>>>>> 14ce0d34b7c87ca030517af796be45e00f111767
 
   // sha256
   async function encodeFile(files: any) {
@@ -301,74 +325,83 @@ console.error("Error fetching data:", error);
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Box
-          sx={{
-            width: "80%",
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            marginLeft: {
-              lg: "8em",
-              md: "6em",
-              sm: "4em",
-              xs: "2em",
-            },
-          }}>
-          <Typography
-            sx={{
-              fontSize: {
-                lg: 30,
-                md: 28,
-                sm: 24,
-                xs: 20,
-              },
-              maxWidth: {
-                lg: 600,
-                md: 500,
-                sm: 400,
-                xs: 300,
-              },
-              fontWeight: 500,
-              textAlign: "left",
-              marginBottom: 4,
-              marginTop: 4,
-              fontFamily: "Roboto",
-            }}>
-            Redactar contrato
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: {
-                lg: 24,
-                md: 22,
-                sm: 18,
-                xs: 16,
-              },
-              fontWeight: 400,
-              textAlign: "left",
-              marginBottom: 4,
-              fontFamily: "'lato'",
-            }}>
-            Al cargar su contrato, podremos analizarlo y brindarle una
-            evaluación de sus términos y condiciones. Por favor, asegúrese de
-            que esté en formato PDF.
-          </Typography>
-          <Typography marginBottom="2em">Datos del Usuario</Typography>
-        </Box>
-        <Box
-          sx={{
-            flexGrow: 1,
-            display: "flex",
-            justifyContent: "center",
-            width: "100%",
-          }}>
+        <Box>
+          <Grid container>
+            <Grid
+              item
+              xs={13}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                marginLeft: {
+                  lg: "7em",
+                  md: "6em",
+                  sm: "4em",
+                  xs: "2em",
+                },
+              }}>
+              <Typography
+                sx={{
+                  fontSize: {
+                    lg: 30,
+                    md: 28,
+                    sm: 24,
+                    xs: 20,
+                  },
+                  maxWidth: {
+                    lg: 600,
+                    md: 500,
+                    sm: 400,
+                    xs: 300,
+                  },
+                  fontWeight: 500,
+                  textAlign: "left",
+                  marginBottom: 4,
+                  marginTop: 4,
+                  fontFamily: "Roboto",
+                }}>
+                Redactar contrato
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: {
+                    lg: 24,
+                    md: 22,
+                    sm: 18,
+                    xs: 16,
+                  },
+                  fontWeight: 400,
+                  textAlign: "left",
+                  marginBottom: 4,
+                  fontFamily: "'lato'",
+                  marginRight: "10px",
+                }}>
+                Al cargar su contrato, podremos analizarlo y brindarle una
+                evaluación de sus términos y condiciones. Por favor, asegúrese
+                de que esté en formato PDF.
+              </Typography>
+            </Grid>
+          </Grid>
+
           <Grid
             container
             spacing={2}
             display="flex"
             justifyContent="center"
-            alignItems="center">
+            alignItems="center"
+            sx={{
+              flexDirection: {
+                lg: "row",
+                md: "column",
+                sm: "column",
+                xs: "column",
+              },
+            }}>
             <Grid item xs={5}>
+              <Typography sx={{ marginBottom: "1em" }}>
+                Datos del Usuario
+              </Typography>
               <TextField
                 id="fullName"
                 name="fullName"
@@ -398,10 +431,9 @@ console.error("Error fetching data:", error);
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
               <TextField
                 placeholder="DNI"
                 id="dni"
@@ -418,6 +450,7 @@ console.error("Error fetching data:", error);
                     event.preventDefault();
                   }
                 }}
+                fullWidth
                 // value={formik.values.dni}
                 // onChange={formik.handleChange}
                 // error={formik.touched.dni && Boolean( formik.errors.dni )}
@@ -444,10 +477,10 @@ console.error("Error fetching data:", error);
                       "-moz-appearance": "textfield",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
+
               <TextField
                 placeholder="Phone"
                 id="phone"
@@ -475,6 +508,7 @@ console.error("Error fetching data:", error);
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
             </Grid>
@@ -506,10 +540,12 @@ console.error("Error fetching data:", error);
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginTop: "3em",
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
+              {/* </Grid> */}
+              {/* <Grid item xs={5}> */}
               <TextField
                 placeholder="Propietario o Inquilino"
                 id="status"
@@ -536,10 +572,11 @@ console.error("Error fetching data:", error);
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
+              {/* </Grid> */}
+              {/* <Grid item xs={5}> */}
               <TextField
                 placeholder="Addres wallet"
                 id="account"
@@ -566,13 +603,28 @@ console.error("Error fetching data:", error);
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
             </Grid>
-            <Grid item xs={10} marginBottom="1em" marginTop="2em">
-              <Typography>Dirección</Typography>
-            </Grid>
+          </Grid>
+
+          <Grid
+            container
+            spacing={2}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              flexDirection: {
+                lg: "row",
+                md: "column",
+                sm: "column",
+                xs: "column",
+              },
+            }}>
             <Grid item xs={5}>
+              <Typography sx={{ marginBottom: "1em" }}>Dirección</Typography>
               <TextField
                 placeholder="Calle"
                 id="streetName"
@@ -603,6 +655,78 @@ console.error("Error fetching data:", error);
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
+                }}
+              />
+              <TextField
+                placeholder="Localidad"
+                id="city"
+                name="city"
+                label="Localidad"
+                onChange={handleFormChange}
+                fullWidth
+                required
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "10px",
+                    backgroundColor: "#F3F3F3",
+                    "& fieldset": {
+                      borderColor: "transparent",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#c2c6f3",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#a4abf3",
+                    },
+                  },
+                  marginBottom: "1em",
+                }}
+              />
+              <TextField
+                placeholder="Código Postal"
+                id="zipCode"
+                name="zipCode"
+                type="number"
+                label="Codigo postal"
+                onChange={handleFormChange}
+                required
+                inputProps={{
+                  inputProps: { min: 0 },
+                }}
+                onKeyDown={(event) => {
+                  if (event?.key === "-" || event?.key === "+") {
+                    event.preventDefault();
+                  }
+                }}
+                // value={formik.values.zipCode}
+                // onChange={formik.handleChange}
+                // error={formik.touched.zipCode && Boolean( formik.errors.zipCode )}
+                // helperText={formik.touched.zipCode && formik.errors.zipCode}
+                fullWidth
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "10px",
+                    backgroundColor: "#F3F3F3",
+                    "& fieldset": {
+                      borderColor: "transparent",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#c2c6f3",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#a4abf3",
+                    },
+                    "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
+                      {
+                        "-webkit-appearance": "none",
+                        margin: 0,
+                      },
+                    '& input[type="number"]': {
+                      "-moz-appearance": "textfield",
+                    },
+                  },
+                  marginBottom: "1em",
                 }}
               />
             </Grid>
@@ -658,36 +782,9 @@ console.error("Error fetching data:", error);
                       "-moz-appearance": "textfield",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
-              <TextField
-                placeholder="Localidad"
-                id="city"
-                name="city"
-                label="Localidad"
-                onChange={handleFormChange}
-                fullWidth
-                required
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "10px",
-                    backgroundColor: "#F3F3F3",
-                    "& fieldset": {
-                      borderColor: "transparent",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#c2c6f3",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#a4abf3",
-                    },
-                  },
-                }}
-              />
-            </Grid>
-            <Grid item xs={5}>
               <TextField
                 placeholder="Provincia"
                 id="state"
@@ -714,62 +811,27 @@ console.error("Error fetching data:", error);
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
             </Grid>
-            <Grid item xs={5} marginBottom="2em">
-              <TextField
-                placeholder="Código Postal"
-                id="zipCode"
-                name="zipCode"
-                type="number"
-                label="Codigo postal"
-                onChange={handleFormChange}
-                required
-                inputProps={{
-                  inputProps: { min: 0 },
-                }}
-                onKeyDown={(event) => {
-                  if (event?.key === "-" || event?.key === "+") {
-                    event.preventDefault();
-                  }
-                }}
-                // value={formik.values.zipCode}
-                // onChange={formik.handleChange}
-                // error={formik.touched.zipCode && Boolean( formik.errors.zipCode )}
-                // helperText={formik.touched.zipCode && formik.errors.zipCode}
-                fullWidth
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "10px",
-                    backgroundColor: "#F3F3F3",
-                    "& fieldset": {
-                      borderColor: "transparent",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#c2c6f3",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#a4abf3",
-                    },
-                    "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
-                      {
-                        "-webkit-appearance": "none",
-                        margin: 0,
-                      },
-                    '& input[type="number"]': {
-                      "-moz-appearance": "textfield",
-                    },
-                  },
-                }}
-              />
-            </Grid>
-            <Grid item xs={5}></Grid>
-
-            <Grid item xs={10}>
-              <Typography>Contrato</Typography>
-            </Grid>
+          </Grid>
+          <Grid
+            container
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+            sx={{
+              flexDirection: {
+                lg: "row",
+                md: "column",
+                sm: "column",
+                xs: "column",
+              },
+            }}>
             <Grid item xs={5}>
+              <Typography sx={{ marginBottom: "1em" }}>Contrato</Typography>
               <TextField
                 placeholder="Tipo de contrato"
                 id="contractName"
@@ -801,16 +863,9 @@ console.error("Error fetching data:", error);
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}></Grid>
-            <Grid
-              item
-              xs={5}
-              display={"flex"}
-              flexDirection="row"
-              alignItems="center">
               <TextField
                 placeholder="Garantía"
                 id="deposit"
@@ -857,11 +912,11 @@ console.error("Error fetching data:", error);
                       "-moz-appearance": "textfield",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
-			<Button
+              <Button
+                fullWidth
                 variant="contained"
                 sx={{
                   backgroundColor: "#C2B7ED",
@@ -872,52 +927,7 @@ console.error("Error fetching data:", error);
                     },
                   },
                   height: "40px",
-                  marginLeft: "2em",
-                  fontSize: {
-                    lg: 12,
-                    md: 10,
-                    sm: 8,
-                    xs: 6,
-                  },
-                }}
-                onClick={handleapprove3}>
-                Quiero una nueva Smart Wallet con Selft-recovery
-              </Button>
-			  <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#C2B7ED",
-                  color: "black",
-                  "&.MuiButton-root": {
-                    "&:hover": {
-                      background: "#BDADED",
-                    },
-                  },
-                  height: "50px",
-
-                  fontSize: {
-                    lg: 12,
-                    md: 10,
-                    sm: 8,
-                    xs: 6,
-                  },
-                  marginLeft: "2em",
-                }}
-                onClick={() => handleapprove(smartWallet)}>
-                Enviar USDT a la nueva Smart Wallet
-              </Button>
-			  <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#C2B7ED",
-                  color: "black",
-                  "&.MuiButton-root": {
-                    "&:hover": {
-                      background: "#BDADED",
-                    },
-                  },
-                  height: "40px",
-                  marginLeft: "2em",
+                  marginBottom: "2em",
                   fontSize: {
                     lg: 12,
                     md: 10,
@@ -928,13 +938,6 @@ console.error("Error fetching data:", error);
                 onClick={handleapprove2}>
                 Aceptar Staking
               </Button>
-            </Grid>
-            <Grid
-              item
-              xs={5}
-              display="flex"
-              flexDirection="row"
-              alignItems="center">
               <TextField
                 placeholder="Monto de alquiler"
                 id="rent"
@@ -981,11 +984,11 @@ console.error("Error fetching data:", error);
                       "-moz-appearance": "textfield",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
               <Button
+                fullWidth
                 variant="contained"
                 sx={{
                   backgroundColor: "#C2B7ED",
@@ -995,7 +998,7 @@ console.error("Error fetching data:", error);
                       background: "#BDADED",
                     },
                   },
-                  height: "50px",
+                  height: "40px",
 
                   fontSize: {
                     lg: 12,
@@ -1003,19 +1006,70 @@ console.error("Error fetching data:", error);
                     sm: 8,
                     xs: 6,
                   },
-                  marginLeft: "2em",
+                  marginBottom: "4em",
                 }}
                 onClick={handleapprove}>
                 Aceptar el envio de Tokens
               </Button>
-            </Grid>
-            <Grid item xs={5}></Grid>
-            <Grid item xs={10}>
               <Button
+                variant="contained"
+                fullWidth
+                sx={{
+                  backgroundColor: "#C2B7ED",
+                  color: "black",
+                  "&.MuiButton-root": {
+                    "&:hover": {
+                      background: "#BDADED",
+                    },
+                  },
+                  height: "40px",
+                  fontSize: {
+                    lg: 12,
+                    md: 10,
+                    sm: 8,
+                    xs: 6,
+                  },
+                  marginBottom: "1em",
+                }}
+                onClick={handleapprove3}>
+                Quiero una nueva Smart Wallet con Selft-recovery
+              </Button>
+              <Button
+                variant="contained"
+                fullWidth
+                sx={{
+                  backgroundColor: "#C2B7ED",
+                  color: "black",
+                  "&.MuiButton-root": {
+                    "&:hover": {
+                      background: "#BDADED",
+                    },
+                  },
+                  height: "40px",
+
+                  fontSize: {
+                    lg: 12,
+                    md: 10,
+                    sm: 8,
+                    xs: 6,
+                  },
+                }}
+                onClick={() => handleapprove(smartWallet)}>
+                Enviar USDT a la nueva Smart Wallet
+              </Button>
+              <Button
+                fullWidth
                 sx={{
                   marginTop: "16px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "2em",
                 }}>
-                <label htmlFor="files">Subi tu contrato de alquiler</label>
+                <label style={{ width: "100%" }} htmlFor="files">
+                  Subi tu contrato de alquiler
+                </label>
                 <input
                   placeholder="Contrato.pdf"
                   type="file"
@@ -1024,14 +1078,12 @@ console.error("Error fetching data:", error);
                   onChange={(e) => generateEncode(e.target.files)}
                 />
               </Button>
-            </Grid>
-            <Grid item xs={10} marginBottom="2em">
-              {/* <Link to={"/save"}> */}
               <Button
                 variant="contained"
                 type="submit"
+                fullWidth
                 sx={{
-                  height: "50px",
+                  height: "40px",
                   backgroundColor: "#C2B7ED",
                   color: "black",
                   "&.MuiButton-root": {
@@ -1039,6 +1091,7 @@ console.error("Error fetching data:", error);
                       background: "#BDADED",
                     },
                   },
+                  marginBottom: "2em",
                   fontSize: {
                     lg: 12,
                     md: 10,
@@ -1048,8 +1101,8 @@ console.error("Error fetching data:", error);
                 }}>
                 Siguiente
               </Button>
-              {/* </Link> */}
             </Grid>
+            <Grid item xs={5}></Grid>
           </Grid>
         </Box>
       </form>
