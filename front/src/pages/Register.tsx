@@ -149,6 +149,7 @@ export default function Register() {
 
       const erc20 = factory.connect(signer!);
       const approve = await erc20.approve(smartWallet, 100000);
+	  console.log("smartWallet", smartWallet);
       const tx = approve.wait();
       console.log("smartWallet", smartWallet);
       const transfer = await erc20.transfer(smartWallet, 100000);
