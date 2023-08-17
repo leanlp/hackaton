@@ -140,7 +140,7 @@ export default function Register() {
   };
 
   const handleapprove = (smartWallet: any) => {
-    async function approve(deposit: number) {
+    async function approve(deposit: number, smartWallet:any) {
       const factory = new ethers.Contract(
         "0xef9ccA0D749A362AAaEbaaC1e7434D861153F51d", //usdtMumbai
         abiERC20,
@@ -149,15 +149,15 @@ export default function Register() {
 
       const erc20 = factory.connect(signer!);
       const approve = await erc20.approve(smartWallet, 100000);
-      const tx = approve.wait;
+      const tx = approve.wait();
       console.log("smartWallet", smartWallet);
       const transfer = await erc20.transfer(smartWallet, 100000);
 
-      const tx2 = transfer.wait;
+      const tx2 = transfer.wait();
       console.log(tx, tx2);
     }
 
-    approve(5000);
+    approve(5000, smartWallet);
   };
 
   const handleapprove2 = () => {
