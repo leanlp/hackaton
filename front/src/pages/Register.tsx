@@ -154,7 +154,7 @@ export default function Register() {
       const tx = approve.wait;
 
       const transfer = await erc20.transfer(
-        smartWallet,
+        {smartWallet},
         100000
       );
       const tx2 = transfer.wait;
