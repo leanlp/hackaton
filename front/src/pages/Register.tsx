@@ -14,7 +14,7 @@ import { User } from "../typings/index";
 import abiContract from "../abiContractV1NFT.json";
 import { useProvider, useAccount, useSigner, useContract } from "wagmi";
 import { ethers } from "ethers";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import abiERC20 from "../abiERC20.json";
 import abiStaking from "../abiStaking.json";
@@ -98,7 +98,14 @@ export default function Register() {
     state: "",
     zipCode: 0,
   });
-
+  const [smartWallet, setSmartWallet] = useState<string | null>(
+    "0xcd67a4b699138Ec8A0990309970e098871f46c89"
+  );
+  useEffect(() => {
+    if (smartWallet) {
+      console.log("Received Wallet Address:", smartWallet);
+    }
+  }, [smartWallet]);
   const [hashPDF, setHash] = useState("");
   // const [addUser] = useMutation<AddUserData>( ADD_USER );
   const { address } = useAccount();
@@ -132,36 +139,31 @@ export default function Register() {
     contract2({ ...form }, hashPDF);
   };
 
-  const handleapprove = () => {
+  const handleapprove = (smartWallet: any) => {
     async function approve(deposit: number) {
       const factory = new ethers.Contract(
-        "0x8536Ccde8249e971021515097Ec2Cb44535E3fD8",
+        "0xef9ccA0D749A362AAaEbaaC1e7434D861153F51d", //usdtMumbai
         abiERC20,
         signer!
       );
 
       const erc20 = factory.connect(signer!);
-      const approve = await erc20.approve(
-        "0xd9369d77c799Bda1fc320764Ce228e9824181400",
-        100000000000000000000n
-      );
+      const approve = await erc20.approve(smartWallet, 100000);
       const tx = approve.wait;
+      console.log("smartWallet", smartWallet);
+      const transfer = await erc20.transfer(smartWallet, 100000);
 
-      const transfer = await erc20.transfer(
-        "0xd9369d77c799Bda1fc320764Ce228e9824181400",
-        100000000000000000000n
-      );
       const tx2 = transfer.wait;
       console.log(tx, tx2);
     }
 
-    approve(222);
+    approve(5000);
   };
 
   const handleapprove2 = () => {
     async function staking(deposit: number) {
       const factory = new ethers.Contract(
-        "0x8536Ccde8249e971021515097Ec2Cb44535E3fD8", //token
+        "0xef9ccA0D749A362AAaEbaaC1e7434D861153F51d", //token
         abiERC20,
         signer!
       );
@@ -178,12 +180,40 @@ export default function Register() {
       );
       const tx = approve.wait;
 
-      const transfer = await stakingFactory.stake(1000000000); //10.000 usdt
+      const transfer = await stakingFactory.stake(100000);
       const tx2 = transfer.wait;
       console.log(tx, tx2);
     }
 
     staking(2222);
+  };
+
+  const handleapprove3 = () => {
+    async function newSmartWallet(wallet: string) {
+      try {
+        const response = await fetch("http://localhost:3005/smartwallet/run", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ param1: wallet }),
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            `API request failed with status ${response.status}: ${response.statusText}`
+          );
+        }
+
+        const data = await response.json();
+        setSmartWallet(data.walletAddress.toString());
+        console.log(data.walletAddress.toString()); // log the returned wallet address
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    newSmartWallet(wallet!);
   };
 
   // sha256
