@@ -161,33 +161,62 @@ export default function Register() {
     approve(5000);
   };
 
-  const handleapprove2 = () => {
+  const handleapprove2 = (smartWallet?: any) => {
     async function staking(deposit: number) {
-      const factory = new ethers.Contract(
-        "0xef9ccA0D749A362AAaEbaaC1e7434D861153F51d", //token
-        abiERC20,
-        signer!
-      );
-      const stakingFactory = new ethers.Contract(
-        "0x317Bf90C250b96281c7E88e3e1F5249FA8BcD502", //staking contract
-        abiStaking,
-        signer!
-      );
-
-      const erc20 = factory.connect(signer!);
-      const approve = await erc20.approve(
-        "0x317Bf90C250b96281c7E88e3e1F5249FA8BcD502",
-        1000000000
-      );
-      const tx = approve.wait;
-
-      const transfer = await stakingFactory.stake(100000);
-      const tx2 = transfer.wait;
-      console.log(tx, tx2);
+		try {
+			const response = await fetch("http://localhost:3005/senduserop/senduserop", {
+			  method: "POST",
+			  headers: {
+				"Content-Type": "application/json",
+			  },
+			  body: JSON.stringify({ param1: wallet }),
+			});
+	
+			if (!response.ok) {
+			  throw new Error(
+				`API request failed with status ${response.status}: ${response.statusText}`
+			  );
+			}
+	
+			const data = await response.json();
+			setSmartWallet(String(data.walletAddress));
+			console.log(data.walletAddress); // log the returned wallet address
+		  } catch (error) {
+			console.error("Error fetching data:", error);
+		  }
+		}
+		staking(2222);
+  
     }
 
-    staking(2222);
-  };
+    
+//   const handleapprove2 = (smartWallet?: any) => {
+//     async function staking(deposit: number) {
+//       const factory = new ethers.Contract(
+//         "0xef9ccA0D749A362AAaEbaaC1e7434D861153F51d", //token
+//         abiERC20,
+//         signer!
+//       );
+//       const stakingFactory = new ethers.Contract(
+//         "0x317Bf90C250b96281c7E88e3e1F5249FA8BcD502", //staking contract
+//         abiStaking,
+//         signer!
+//       );
+
+//       const erc20 = factory.connect(signer!);
+//       const approve = await erc20.approve(
+//         "0x317Bf90C250b96281c7E88e3e1F5249FA8BcD502",
+//         1000000000
+//       );
+//       const tx = approve.wait;
+
+//       const transfer = await stakingFactory.stake(100000);
+//       const tx2 = transfer.wait;
+//       console.log(tx, tx2);
+//     }
+
+//     staking(2222);
+//   };
 
   const handleapprove3 = () => {
     async function newSmartWallet(wallet: string) {
@@ -889,29 +918,7 @@ export default function Register() {
                   marginBottom: "1em",
                 }}
               />
-              <Button
-                fullWidth
-                variant="contained"
-                sx={{
-                  backgroundColor: "#C2B7ED",
-                  color: "black",
-                  "&.MuiButton-root": {
-                    "&:hover": {
-                      background: "#BDADED",
-                    },
-                  },
-                  height: "40px",
-                  marginBottom: "2em",
-                  fontSize: {
-                    lg: 12,
-                    md: 10,
-                    sm: 8,
-                    xs: 6,
-                  },
-                }}
-                onClick={handleapprove2}>
-                Aceptar Staking
-              </Button>
+             
               <TextField
                 placeholder="Monto de alquiler"
                 id="rent"
@@ -1030,6 +1037,29 @@ export default function Register() {
                 }}
                 onClick={() => handleapprove(smartWallet)}>
                 Enviar USDT a la nueva Smart Wallet
+              </Button>
+			  <Button
+                fullWidth
+                variant="contained"
+                sx={{
+                  backgroundColor: "#C2B7ED",
+                  color: "black",
+                  "&.MuiButton-root": {
+                    "&:hover": {
+                      background: "#BDADED",
+                    },
+                  },
+                  height: "40px",
+                  marginBottom: "2em",
+                  fontSize: {
+                    lg: 12,
+                    md: 10,
+                    sm: 8,
+                    xs: 6,
+                  },
+                }}
+				onClick={() => handleapprove2(smartWallet)}>
+                Ejecutar Staking
               </Button>
               <Button
                 fullWidth
