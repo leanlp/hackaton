@@ -169,7 +169,7 @@ export default function Register() {
 			  headers: {
 				"Content-Type": "application/json",
 			  },
-			  body: JSON.stringify({ smartWallet }),
+			  body: JSON.stringify({ walletAddress: smartWallet }),
 			});
 	
 			if (!response.ok) {
@@ -179,7 +179,7 @@ export default function Register() {
 			}
 	
 			const data = await response.json();
-			setSmartWallet(String(data.walletAddress));
+			// setSmartWallet(String(data.walletAddress));
 			console.log(data.walletAddress); // log the returned wallet address
 		  } catch (error) {
 			console.error("Error fetching data:", error);
