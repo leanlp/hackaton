@@ -20,7 +20,7 @@ import abiERC20 from "../abiERC20.json";
 import abiStaking from "../abiStaking.json";
 
 import { Link } from "react-router-dom";
-import { Margin } from "@mui/icons-material";
+import { Directions, Margin } from "@mui/icons-material";
 // import { Sidebar } from "../components/Sidebar";
 
 // import { gql, useMutation } from '@apollo/client';
@@ -268,74 +268,83 @@ export default function Register() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Box
-          sx={{
-            width: "80%",
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            marginLeft: {
-              lg: "8em",
-              md: "6em",
-              sm: "4em",
-              xs: "2em",
-            },
-          }}>
-          <Typography
-            sx={{
-              fontSize: {
-                lg: 30,
-                md: 28,
-                sm: 24,
-                xs: 20,
-              },
-              maxWidth: {
-                lg: 600,
-                md: 500,
-                sm: 400,
-                xs: 300,
-              },
-              fontWeight: 500,
-              textAlign: "left",
-              marginBottom: 4,
-              marginTop: 4,
-              fontFamily: "Roboto",
-            }}>
-            Redactar contrato
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: {
-                lg: 24,
-                md: 22,
-                sm: 18,
-                xs: 16,
-              },
-              fontWeight: 400,
-              textAlign: "left",
-              marginBottom: 4,
-              fontFamily: "'lato'",
-            }}>
-            Al cargar su contrato, podremos analizarlo y brindarle una
-            evaluación de sus términos y condiciones. Por favor, asegúrese de
-            que esté en formato PDF.
-          </Typography>
-          <Typography marginBottom="2em">Datos del Usuario</Typography>
-        </Box>
-        <Box
-          sx={{
-            flexGrow: 1,
-            display: "flex",
-            justifyContent: "center",
-            width: "100%",
-          }}>
+        <Box>
+          <Grid container>
+            <Grid
+              item
+              xs={13}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                marginLeft: {
+                  lg: "7em",
+                  md: "6em",
+                  sm: "4em",
+                  xs: "2em",
+                },
+              }}>
+              <Typography
+                sx={{
+                  fontSize: {
+                    lg: 30,
+                    md: 28,
+                    sm: 24,
+                    xs: 20,
+                  },
+                  maxWidth: {
+                    lg: 600,
+                    md: 500,
+                    sm: 400,
+                    xs: 300,
+                  },
+                  fontWeight: 500,
+                  textAlign: "left",
+                  marginBottom: 4,
+                  marginTop: 4,
+                  fontFamily: "Roboto",
+                }}>
+                Redactar contrato
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: {
+                    lg: 24,
+                    md: 22,
+                    sm: 18,
+                    xs: 16,
+                  },
+                  fontWeight: 400,
+                  textAlign: "left",
+                  marginBottom: 4,
+                  fontFamily: "'lato'",
+                  marginRight: "10px",
+                }}>
+                Al cargar su contrato, podremos analizarlo y brindarle una
+                evaluación de sus términos y condiciones. Por favor, asegúrese
+                de que esté en formato PDF.
+              </Typography>
+            </Grid>
+          </Grid>
+
           <Grid
             container
             spacing={2}
             display="flex"
             justifyContent="center"
-            alignItems="center">
+            alignItems="center"
+            sx={{
+              flexDirection: {
+                lg: "row",
+                md: "column",
+                sm: "column",
+                xs: "column",
+              },
+            }}>
             <Grid item xs={5}>
+              <Typography sx={{ marginBottom: "1em" }}>
+                Datos del Usuario
+              </Typography>
               <TextField
                 id="fullName"
                 name="fullName"
@@ -365,10 +374,9 @@ export default function Register() {
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
               <TextField
                 placeholder="DNI"
                 id="dni"
@@ -385,6 +393,7 @@ export default function Register() {
                     event.preventDefault();
                   }
                 }}
+                fullWidth
                 // value={formik.values.dni}
                 // onChange={formik.handleChange}
                 // error={formik.touched.dni && Boolean( formik.errors.dni )}
@@ -411,10 +420,10 @@ export default function Register() {
                       "-moz-appearance": "textfield",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
+
               <TextField
                 placeholder="Phone"
                 id="phone"
@@ -442,6 +451,7 @@ export default function Register() {
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
             </Grid>
@@ -473,10 +483,12 @@ export default function Register() {
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginTop: "3em",
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
+              {/* </Grid> */}
+              {/* <Grid item xs={5}> */}
               <TextField
                 placeholder="Propietario o Inquilino"
                 id="status"
@@ -503,10 +515,11 @@ export default function Register() {
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
+              {/* </Grid> */}
+              {/* <Grid item xs={5}> */}
               <TextField
                 placeholder="Addres wallet"
                 id="account"
@@ -533,13 +546,28 @@ export default function Register() {
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
             </Grid>
-            <Grid item xs={10} marginBottom="1em" marginTop="2em">
-              <Typography>Dirección</Typography>
-            </Grid>
+          </Grid>
+
+          <Grid
+            container
+            spacing={2}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              flexDirection: {
+                lg: "row",
+                md: "column",
+                sm: "column",
+                xs: "column",
+              },
+            }}>
             <Grid item xs={5}>
+              <Typography sx={{ marginBottom: "1em" }}>Dirección</Typography>
               <TextField
                 placeholder="Calle"
                 id="streetName"
@@ -570,6 +598,78 @@ export default function Register() {
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
+                }}
+              />
+              <TextField
+                placeholder="Localidad"
+                id="city"
+                name="city"
+                label="Localidad"
+                onChange={handleFormChange}
+                fullWidth
+                required
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "10px",
+                    backgroundColor: "#F3F3F3",
+                    "& fieldset": {
+                      borderColor: "transparent",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#c2c6f3",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#a4abf3",
+                    },
+                  },
+                  marginBottom: "1em",
+                }}
+              />
+              <TextField
+                placeholder="Código Postal"
+                id="zipCode"
+                name="zipCode"
+                type="number"
+                label="Codigo postal"
+                onChange={handleFormChange}
+                required
+                inputProps={{
+                  inputProps: { min: 0 },
+                }}
+                onKeyDown={(event) => {
+                  if (event?.key === "-" || event?.key === "+") {
+                    event.preventDefault();
+                  }
+                }}
+                // value={formik.values.zipCode}
+                // onChange={formik.handleChange}
+                // error={formik.touched.zipCode && Boolean( formik.errors.zipCode )}
+                // helperText={formik.touched.zipCode && formik.errors.zipCode}
+                fullWidth
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "10px",
+                    backgroundColor: "#F3F3F3",
+                    "& fieldset": {
+                      borderColor: "transparent",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#c2c6f3",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#a4abf3",
+                    },
+                    "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
+                      {
+                        "-webkit-appearance": "none",
+                        margin: 0,
+                      },
+                    '& input[type="number"]': {
+                      "-moz-appearance": "textfield",
+                    },
+                  },
+                  marginBottom: "1em",
                 }}
               />
             </Grid>
@@ -625,36 +725,9 @@ export default function Register() {
                       "-moz-appearance": "textfield",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
-              <TextField
-                placeholder="Localidad"
-                id="city"
-                name="city"
-                label="Localidad"
-                onChange={handleFormChange}
-                fullWidth
-                required
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "10px",
-                    backgroundColor: "#F3F3F3",
-                    "& fieldset": {
-                      borderColor: "transparent",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#c2c6f3",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#a4abf3",
-                    },
-                  },
-                }}
-              />
-            </Grid>
-            <Grid item xs={5}>
               <TextField
                 placeholder="Provincia"
                 id="state"
@@ -681,62 +754,27 @@ export default function Register() {
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
             </Grid>
-            <Grid item xs={5} marginBottom="2em">
-              <TextField
-                placeholder="Código Postal"
-                id="zipCode"
-                name="zipCode"
-                type="number"
-                label="Codigo postal"
-                onChange={handleFormChange}
-                required
-                inputProps={{
-                  inputProps: { min: 0 },
-                }}
-                onKeyDown={(event) => {
-                  if (event?.key === "-" || event?.key === "+") {
-                    event.preventDefault();
-                  }
-                }}
-                // value={formik.values.zipCode}
-                // onChange={formik.handleChange}
-                // error={formik.touched.zipCode && Boolean( formik.errors.zipCode )}
-                // helperText={formik.touched.zipCode && formik.errors.zipCode}
-                fullWidth
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "10px",
-                    backgroundColor: "#F3F3F3",
-                    "& fieldset": {
-                      borderColor: "transparent",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#c2c6f3",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#a4abf3",
-                    },
-                    "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
-                      {
-                        "-webkit-appearance": "none",
-                        margin: 0,
-                      },
-                    '& input[type="number"]': {
-                      "-moz-appearance": "textfield",
-                    },
-                  },
-                }}
-              />
-            </Grid>
-            <Grid item xs={5}></Grid>
-
-            <Grid item xs={10}>
-              <Typography>Contrato</Typography>
-            </Grid>
+          </Grid>
+          <Grid
+            container
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+            sx={{
+              flexDirection: {
+                lg: "row",
+                md: "column",
+                sm: "column",
+                xs: "column",
+              },
+            }}>
             <Grid item xs={5}>
+              <Typography sx={{ marginBottom: "1em" }}>Contrato</Typography>
               <TextField
                 placeholder="Tipo de contrato"
                 id="contractName"
@@ -768,16 +806,9 @@ export default function Register() {
                       borderColor: "#a4abf3",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}></Grid>
-            <Grid
-              item
-              xs={5}
-              display={"flex"}
-              flexDirection="row"
-              alignItems="center">
               <TextField
                 placeholder="Garantía"
                 id="deposit"
@@ -824,11 +855,11 @@ export default function Register() {
                       "-moz-appearance": "textfield",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
               <Button
+                fullWidth
                 variant="contained"
                 sx={{
                   backgroundColor: "#C2B7ED",
@@ -839,7 +870,7 @@ export default function Register() {
                     },
                   },
                   height: "40px",
-                  marginLeft: "2em",
+                  marginBottom: "2em",
                   fontSize: {
                     lg: 12,
                     md: 10,
@@ -850,13 +881,6 @@ export default function Register() {
                 onClick={handleapprove2}>
                 Aceptar Staking
               </Button>
-            </Grid>
-            <Grid
-              item
-              xs={5}
-              display="flex"
-              flexDirection="row"
-              alignItems="center">
               <TextField
                 placeholder="Monto de alquiler"
                 id="rent"
@@ -903,11 +927,11 @@ export default function Register() {
                       "-moz-appearance": "textfield",
                     },
                   },
+                  marginBottom: "1em",
                 }}
               />
-            </Grid>
-            <Grid item xs={5}>
               <Button
+                fullWidth
                 variant="contained"
                 sx={{
                   backgroundColor: "#C2B7ED",
@@ -917,7 +941,7 @@ export default function Register() {
                       background: "#BDADED",
                     },
                   },
-                  height: "50px",
+                  height: "40px",
 
                   fontSize: {
                     lg: 12,
@@ -925,19 +949,24 @@ export default function Register() {
                     sm: 8,
                     xs: 6,
                   },
-                  marginLeft: "2em",
+                  marginBottom: "2em",
                 }}
                 onClick={handleapprove}>
                 Aceptar el envio de Tokens
               </Button>
-            </Grid>
-            <Grid item xs={5}></Grid>
-            <Grid item xs={10}>
               <Button
+                fullWidth
                 sx={{
                   marginTop: "16px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "2em",
                 }}>
-                <label htmlFor="files">Subi tu contrato de alquiler</label>
+                <label style={{ width: "100%" }} htmlFor="files">
+                  Subi tu contrato de alquiler
+                </label>
                 <input
                   placeholder="Contrato.pdf"
                   type="file"
@@ -946,14 +975,12 @@ export default function Register() {
                   onChange={(e) => generateEncode(e.target.files)}
                 />
               </Button>
-            </Grid>
-            <Grid item xs={10} marginBottom="2em">
-              {/* <Link to={"/save"}> */}
               <Button
                 variant="contained"
                 type="submit"
+                fullWidth
                 sx={{
-                  height: "50px",
+                  height: "40px",
                   backgroundColor: "#C2B7ED",
                   color: "black",
                   "&.MuiButton-root": {
@@ -961,6 +988,7 @@ export default function Register() {
                       background: "#BDADED",
                     },
                   },
+                  marginBottom: "2em",
                   fontSize: {
                     lg: 12,
                     md: 10,
@@ -970,8 +998,8 @@ export default function Register() {
                 }}>
                 Siguiente
               </Button>
-              {/* </Link> */}
             </Grid>
+            <Grid item xs={5}></Grid>
           </Grid>
         </Box>
       </form>
