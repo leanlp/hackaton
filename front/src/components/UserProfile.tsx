@@ -13,7 +13,14 @@ function UserProfile() {
         flexDirection="row"
         marginTop={8}
         alignItems="center"
-        marginLeft={20}>
+        sx={{
+          marginLeft: {
+            lg: "20em",
+            md: "1em",
+            sm: "0em",
+            xs: "0em",
+          },
+        }}>
         <Avatar
           alt="Remy Sharp"
           src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
