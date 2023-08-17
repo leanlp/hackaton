@@ -103,7 +103,7 @@ export default function Register() {
   );
   useEffect(() => {
     if (smartWallet && smartWallet !== "0xcd67a4b699138Ec8A0990309970e098871f46c89") {
-        console.log("Received Wallet Address:", smartWallet);
+      
     }
 }, [smartWallet]);
   const [hashPDF, setHash] = useState("");
@@ -146,7 +146,7 @@ export default function Register() {
         abiERC20,
         signer!
       );
-
+	  console.log("smartWallet", smartWallet);
       const erc20 = factory.connect(signer!);
       const approve = await erc20.approve(smartWallet, 100000);
 	  console.log("smartWallet", smartWallet);
