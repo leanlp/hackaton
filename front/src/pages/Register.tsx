@@ -168,7 +168,7 @@ console.log("smartWallet", smartWallet)
   const handleapprove2 = () => {
     async function staking(deposit: number) {
       const factory = new ethers.Contract(
-        "0x8536Ccde8249e971021515097Ec2Cb44535E3fD8", //token
+        "0xef9ccA0D749A362AAaEbaaC1e7434D861153F51d", //token
         abiERC20,
         signer!
       );
@@ -185,7 +185,7 @@ console.log("smartWallet", smartWallet)
       );
       const tx = approve.wait;
 
-      const transfer = await stakingFactory.stake(1000000000); //10.000 usdt
+      const transfer = await stakingFactory.stake(100000); 
       const tx2 = transfer.wait;
       console.log(tx, tx2);
     }
