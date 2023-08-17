@@ -979,10 +979,56 @@ export default function Register() {
                     sm: 8,
                     xs: 6,
                   },
-                  marginBottom: "2em",
+                  marginBottom: "4em",
                 }}
                 onClick={handleapprove}>
                 Aceptar el envio de Tokens
+              </Button>
+              <Button
+                variant="contained"
+                fullWidth
+                sx={{
+                  backgroundColor: "#C2B7ED",
+                  color: "black",
+                  "&.MuiButton-root": {
+                    "&:hover": {
+                      background: "#BDADED",
+                    },
+                  },
+                  height: "40px",
+                  fontSize: {
+                    lg: 12,
+                    md: 10,
+                    sm: 8,
+                    xs: 6,
+                  },
+                  marginBottom: "1em",
+                }}
+                onClick={handleapprove3}>
+                Quiero una nueva Smart Wallet con Selft-recovery
+              </Button>
+              <Button
+                variant="contained"
+                fullWidth
+                sx={{
+                  backgroundColor: "#C2B7ED",
+                  color: "black",
+                  "&.MuiButton-root": {
+                    "&:hover": {
+                      background: "#BDADED",
+                    },
+                  },
+                  height: "40px",
+
+                  fontSize: {
+                    lg: 12,
+                    md: 10,
+                    sm: 8,
+                    xs: 6,
+                  },
+                }}
+                onClick={() => handleapprove(smartWallet)}>
+                Enviar USDT a la nueva Smart Wallet
               </Button>
               <Button
                 fullWidth
