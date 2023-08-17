@@ -147,8 +147,8 @@ export default function Register() {
 
       const erc20 = factory.connect(signer!);
       const approve = await erc20.approve(
-        "0xef9ccA0D749A362AAaEbaaC1e7434D861153F51d",
-		// smartWallet,
+        
+		smartWallet,
         100000
       );
       const tx = approve.wait;
@@ -903,7 +903,7 @@ console.error("Error fetching data:", error);
                   },
                   marginLeft: "2em",
                 }}
-                onClick={handleapprove}>
+                onClick={() => handleapprove(smartWallet)}>
                 Enviar USDT a la nueva Smart Wallet
               </Button>
 			  <Button
