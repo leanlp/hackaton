@@ -101,7 +101,7 @@ export default function Register() {
 				}
 		  
 				const data = await response.json();
-      console.log(data.walletAddress); // log the returned wallet address
+      console.log("new Smart Wallet", data.walletAddress); // log the returned new wallet address
     } catch (error) {
       console.error("Error fetching data:", error);
     }
