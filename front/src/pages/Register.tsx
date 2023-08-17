@@ -202,7 +202,7 @@ let smartWallet
 		}
   
 		const data = await response.json();
-		let smartWallet = data.walletAddress
+		smartWallet = data.walletAddress
         console.log(data.walletAddress); // log the returned wallet address
 } catch (error) {
 console.error("Error fetching data:", error);
