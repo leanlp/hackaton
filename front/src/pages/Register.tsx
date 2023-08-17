@@ -98,7 +98,7 @@ export default function Register() {
     state: "",
     zipCode: 0,
   });
-  const [smartWallet, setSmartWallet] = useState<"0xcd67a4b699138Ec8A0990309970e098871f46c89" | null>(null);
+  const [smartWallet, setSmartWallet] = useState<string | null>("0xcd67a4b699138Ec8A0990309970e098871f46c89");
   useEffect(() => {
     if (smartWallet) {
         console.log("Received Wallet Address:", smartWallet);
