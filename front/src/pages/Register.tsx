@@ -137,7 +137,7 @@ export default function Register() {
     contract2({ ...form }, hashPDF);
   };
 
-  const handleapprove = () => {
+  const handleapprove = (smartWallet: any) => {
     async function approve(deposit: number) {
       const factory = new ethers.Contract(
         "0x8536Ccde8249e971021515097Ec2Cb44535E3fD8",
