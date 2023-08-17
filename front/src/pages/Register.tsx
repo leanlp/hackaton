@@ -98,6 +98,7 @@ export default function Register() {
     state: "",
     zipCode: 0,
   });
+  const [smartWalletAddress, setSmartWalletAddress] = useState<string>("");
 
   const [hashPDF, setHash] = useState("");
   // const [addUser] = useMutation<AddUserData>( ADD_USER );
@@ -132,7 +133,7 @@ export default function Register() {
     contract2({ ...form }, hashPDF);
   };
 let smartWallet
-  const handleapprove = (smartWallet: any) => {
+  const handleapprove = () => {
     async function approve(deposit: number) {
       const factory = new ethers.Contract(
         "0x8536Ccde8249e971021515097Ec2Cb44535E3fD8",
@@ -142,20 +143,20 @@ let smartWallet
 
       const erc20 = factory.connect(signer!);
       const approve = await erc20.approve(
-        smartWallet,
+        smartWalletAddress,
         100000000000000000000n
       );
       const tx = approve.wait;
 
       const transfer = await erc20.transfer(
-        smartWallet,
+        smartWalletAddress,
         100000n
       );
       const tx2 = transfer.wait;
       console.log(tx, tx2);
     }
 
-    approve(smartWallet);
+    approve(5000);
   };
 
   const handleapprove2 = () => {
@@ -202,7 +203,7 @@ let smartWallet
 		}
   
 		const data = await response.json();
-		smartWallet = data.walletAddress
+		setSmartWalletAddress(data.walletAddress); 
         console.log(data.walletAddress); // log the returned wallet address
 } catch (error) {
 console.error("Error fetching data:", error);
