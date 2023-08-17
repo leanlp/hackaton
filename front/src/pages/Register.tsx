@@ -154,7 +154,7 @@ export default function Register() {
       const tx = approve.wait;
 
       const transfer = await erc20.transfer(
-        {smartWallet},
+        smartWallet,
         100000
       );
       const tx2 = transfer.wait;
@@ -208,8 +208,8 @@ export default function Register() {
 		}
   
 		const data = await response.json();
-		setSmartWallet(data.walletAddress); 
-        console.log(data.walletAddress); // log the returned wallet address
+		setSmartWallet(data.walletAddress.toString()); 
+        console.log(data.walletAddress.toString()); // log the returned wallet address
 } catch (error) {
 console.error("Error fetching data:", error);
 }
