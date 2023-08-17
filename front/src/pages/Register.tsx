@@ -102,10 +102,10 @@ export default function Register() {
     "0xcd67a4b699138Ec8A0990309970e098871f46c89"
   );
   useEffect(() => {
-    if (smartWallet) {
-      console.log("Received Wallet Address:", smartWallet);
+    if (smartWallet && smartWallet !== "0xcd67a4b699138Ec8A0990309970e098871f46c89") {
+        console.log("Received Wallet Address:", smartWallet);
     }
-  }, [smartWallet]);
+}, [smartWallet]);
   const [hashPDF, setHash] = useState("");
   // const [addUser] = useMutation<AddUserData>( ADD_USER );
   const { address } = useAccount();
