@@ -169,7 +169,7 @@ export default function Register() {
 			  headers: {
 				"Content-Type": "application/json",
 			  },
-			  body: JSON.stringify({ walletAddress: smartWallet }),
+			  body: JSON.stringify({ smartWallet }),
 			});
 	
 			if (!response.ok) {
