@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import { object, number, string, ObjectSchema } from "yup";
 import { User } from "../typings/index";
 import abiContract from "../abiContractV1NFT.json";
-import { useProvider, useAccount, useSigner, useContract } from "wagmi";
+import { useProvider, useAccount, useSigner, useContract, Address } from "wagmi";
 import { ethers } from "ethers";
 import {ChangeEvent, FormEvent, useState} from "react"
 import { useNavigate } from 'react-router-dom';
@@ -16,9 +16,6 @@ import abiStaking from "../abiStaking.json"
 
 import { Link } from "react-router-dom";
 import { Margin } from "@mui/icons-material";
-// import { Sidebar } from "../components/Sidebar";
-
-// import { gql, useMutation } from '@apollo/client';
 
 
 
@@ -27,57 +24,6 @@ interface AddUserData {
 	addUser: User;
 }
 
-// const ADD_USER = gql`
-//   mutation CreateUser($fullName:String!, $email: String!,$phone: String!,$dni: Int!,$status: String!,$account: EVMAccountAddress!,$contractName: String!,$deposit: Int!,$rent:Int!,$transactionHash:String!,$file: String!,$streetName: String!,$streetNumber: Int!,$city:String!,$state: String!,$zipCode: Int!) {
-//     createUser(  
-// 		user:{ fullName: $fullName, email: $email,phone:$phone,dni: $dni, status: $status,account: $account,contractName: $contractName, deposit: $deposit,rent: $rent,transactionHash: $transactionHash, file: $file,streetName: $streetName,streetNumber: $streetNumber,city: $city,state:$state,zipCode:$zipCode}
-// 		){
-//     txHash
-//     user {
-//       id
-// 	fullName
-//       email
-// 	  phone
-// 	  dni
-// 	  status
-// 	  account
-// 	  contractName
-// 	  deposit
-// 	  rent
-// 	  transactionHash
-// 	  file
-// 	  streetName
-// 	  streetNumber
-// 	  city
-// 	  state
-// 	  zipCode
-//     }
-//   }
-	
-//   }
-// `;
-
-
-
-
-// const validationSchema: ObjectSchema<User> = object( {
-// 	fullName: string(),
-// 	email: string(),
-// 	phone: string(),
-// 	dni: number(),
-// 	status: string(),
-// 	account: string(),
-// 	contractName: string(),
-// 	deposit: number(),
-// 	rent: number(),
-// 	transactionHash: string(),
-// 	file: string(),
-// 	streetName: string(),
-// 	streetNumber: number(),
-// 	city: string(),
-// 	state: string(),
-// 	zipCode: number(),
-// } );
 
 //REEMPLAZAR TODA LA INFO QUE VIENE DE WALLET DE HASH Y DE CONTRATO POR LOS DATOS DE ESTADO PARA MANDAR EL FORM
 export default function Register() {
@@ -110,28 +56,7 @@ export default function Register() {
 	const navigate = useNavigate();
 
 	
-	// 	validationSchema: validationSchema,
-	// 	onSubmit: ( values ) => {
-	// 		const { fullName, email, phone, dni, status, account, contractName, deposit, rent, transactionHash, file, streetName, streetNumber, city, state, zipCode }= values 
 
-	// 		// addUser( { variables: { fullName, email, phone, dni, status, account, contractName, deposit, rent, transactionHash, file, streetName, streetNumber, city, state, zipCode } } )
-
-
-	// 		alert( JSON.stringify( values, null, 2 ) );
-	// 		// console.log(values.fullName, values.dni)
-
-	// 		contract2(values, hashPDF); //instancia la async function contract
-	// 		navigate('/save');
-	// 	},
-	// } );
-
-
-	// const handleSubmit = ( e: React.FormEvent<HTMLFormElement> ) => {
-	// 	e.preventDefault();
-	// 	addUser( { variables: { title, author } } );
-	// 	setTitle( '' );
-	// 	setAuthor( '' );
-	// };
 
 	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -160,7 +85,30 @@ export default function Register() {
 		approve(222)
 		}
 
-
+		const handleapprove3 = () => {
+			async function newSmartWallet(wallet: Address){
+			  try {
+				const response = await fetch("http://localhost:3005/smartwallet/run", {
+				  method: 'POST',
+				  headers: {
+					'Content-Type': 'application/json'
+				  },
+				  body: JSON.stringify({ param1: wallet }), 
+				});
+				
+				if (!response.ok) {
+				  throw new Error(`API request failed with status ${response.status}: ${response.statusText}`);
+				}
+		  
+				const data = await response.json();
+      console.log(data.walletAddress); // log the returned wallet address
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+			}
+		  
+			newSmartWallet(wallet!);
+		  }
 		const handleapprove2 = () => {
 			async function staking(deposit: number){
 				const factory = new ethers.Contract(
@@ -178,7 +126,7 @@ export default function Register() {
 				const approve = await erc20.approve("0x317Bf90C250b96281c7E88e3e1F5249FA8BcD502", 1000000000)
 				const tx= approve.wait
 	
-				const transfer = await stakingFactory.stake( 1000000000)   //10.000 usdt
+				const transfer = await stakingFactory.stake(1000000000)   //10.000 usdt
 				const tx2= transfer.wait
 				console.log(tx, tx2)
 			}
@@ -830,6 +778,22 @@ export default function Register() {
 						</Grid>
 						<Grid item xs={5} >
 						<Button
+							variant="contained"
+							sx={{
+								backgroundColor: "#265700",
+								height:'40px',
+								marginLeft:'2em',
+								fontSize:{
+									lg:12,
+									md: 10,
+									sm: 8,
+									xs: 6,
+								},
+							}}
+							onClick={handleapprove3}
+						>
+							Quiero una nueva Smart Wallet con self-recovery
+						</Button><Button
 							variant="contained"
 							sx={{
 								backgroundColor: "#265700",
