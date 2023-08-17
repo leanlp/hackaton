@@ -968,7 +968,7 @@ export default function Register() {
                   marginBottom: "1em",
                 }}
               />
-              <Button
+              {/* <Button
                 fullWidth
                 variant="contained"
                 sx={{
@@ -991,7 +991,7 @@ export default function Register() {
                 }}
                 onClick={handleapprove}>
                 Aceptar el envio de Tokens
-              </Button>
+              </Button> */}
               <Button
                 variant="contained"
                 fullWidth
