@@ -149,7 +149,7 @@ export default function Register() {
       const approve = await erc20.approve(
         "0xef9ccA0D749A362AAaEbaaC1e7434D861153F51d",
 		// smartWallet,
-        100000000000000000000
+        100000
       );
       const tx = approve.wait;
 
