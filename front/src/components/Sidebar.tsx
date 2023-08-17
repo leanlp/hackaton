@@ -25,9 +25,17 @@ export default function Sidebar() {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("");
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
-  };
+  const toggleDrawer =
+    (newOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        setOpen(newOpen);
+      }
+      setOpen(newOpen);
+    };
 
   return (
     <>
@@ -41,6 +49,7 @@ export default function Sidebar() {
           color="inherit"
           aria-label="open drawer"
           onClick={toggleDrawer(true)}
+          onKeyDown={toggleDrawer(false)}
           // edge="start"
           // sx={{ mr: -50, mb:-60, ...(open && { display: 'none' }) }}
         >
@@ -50,6 +59,7 @@ export default function Sidebar() {
           variant="temporary"
           anchor="left"
           open={open}
+          onClose={toggleDrawer(false)}
           sx={{
             "&  .MuiPaper-root": { backgroundColor: "#1A1A31" },
           }}>
@@ -83,7 +93,8 @@ export default function Sidebar() {
                   color: "#CFF153",
                   minWidth: "250px",
                 },
-              }}>
+              }}
+              onClick={toggleDrawer(false)}>
               <Link to="/">
                 <ListItemButton
                   selected={selected === "home"}
@@ -102,6 +113,7 @@ export default function Sidebar() {
                   minWidth: "250px",
                 },
               }}
+              onClick={toggleDrawer(false)}
               key={"Mis Contratos"}
               disablePadding>
               <Link to="/register">
@@ -123,7 +135,8 @@ export default function Sidebar() {
                   color: "#CFF153",
                   minWidth: "250px",
                 },
-              }}>
+              }}
+              onClick={toggleDrawer(false)}>
               <Link to="/profile">
                 <ListItemButton
                   selected={selected === "profile"}
@@ -136,6 +149,7 @@ export default function Sidebar() {
               </Link>
             </ListItem>
             <ListItem
+              onClick={toggleDrawer(false)}
               key={"RegisterUsers"}
               disablePadding
               sx={{
@@ -156,6 +170,7 @@ export default function Sidebar() {
               </Link>
             </ListItem>
             <ListItem
+              onClick={toggleDrawer(false)}
               key={"RegisterHouse"}
               disablePadding
               sx={{
@@ -176,6 +191,7 @@ export default function Sidebar() {
               </Link>
             </ListItem>
             <ListItem
+              onClick={toggleDrawer(false)}
               key={"viewHouses"}
               disablePadding
               sx={{
