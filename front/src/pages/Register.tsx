@@ -189,7 +189,6 @@ export default function Register() {
   };
 
   const handleapprove3 = () => {
-<<<<<<< HEAD
     async function newSmartWallet(wallet: string) {
       try {
         const response = await fetch("http://localhost:3005/smartwallet/run", {
@@ -207,8 +206,8 @@ export default function Register() {
         }
 
         const data = await response.json();
-        setSmartWallet(data.walletAddress.toString());
-        console.log(data.walletAddress.toString()); // log the returned wallet address
+        setSmartWallet(String(data.walletAddress));
+        console.log(data.walletAddress); // log the returned wallet address
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -216,32 +215,6 @@ export default function Register() {
 
     newSmartWallet(wallet!);
   };
-=======
-	async function newSmartWallet(wallet: string){
-	  try {
-		const response = await fetch("http://localhost:3005/smartwallet/run", {
-		  method: 'POST',
-		  headers: {
-			'Content-Type': 'application/json'
-		  },
-		  body: JSON.stringify({ param1: wallet }), 
-		});
-		
-		if (!response.ok) {
-		  throw new Error(`API request failed with status ${response.status}: ${response.statusText}`);
-		}
-  
-		const data = await response.json();
-		setSmartWallet(String(data.walletAddress));
-        console.log(data.walletAddress); // log the returned wallet address
-} catch (error) {
-console.error("Error fetching data:", error);
-}
-	}
-  
-	newSmartWallet(wallet!);
-  }
->>>>>>> 14ce0d34b7c87ca030517af796be45e00f111767
 
   // sha256
   async function encodeFile(files: any) {
