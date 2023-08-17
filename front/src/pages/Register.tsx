@@ -14,7 +14,7 @@ import { User } from "../typings/index";
 import abiContract from "../abiContractV1NFT.json";
 import { useProvider, useAccount, useSigner, useContract } from "wagmi";
 import { ethers } from "ethers";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import abiERC20 from "../abiERC20.json";
 import abiStaking from "../abiStaking.json";
@@ -99,7 +99,11 @@ export default function Register() {
     zipCode: 0,
   });
   const [smartWallet, setSmartWallet] = useState<string | null>(null);
-
+  useEffect(() => {
+    if (smartWallet) {
+        console.log("Received Wallet Address:", smartWallet);
+    }
+}, [smartWallet]);
   const [hashPDF, setHash] = useState("");
   // const [addUser] = useMutation<AddUserData>( ADD_USER );
   const { address } = useAccount();
