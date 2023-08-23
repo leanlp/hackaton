@@ -164,7 +164,7 @@ export default function Register() {
   const handleapprove2 = (smartWallet?: any) => {
     async function staking(deposit: number) {
 		try {
-			const response = await fetch("http://localhost:3005/senduserop/senduserop", {
+			const response = await fetch("https://api.keywise.com.ar/senduserop/senduserop", {
 			  method: "POST",
 			  headers: {
 				"Content-Type": "application/json",
@@ -221,7 +221,7 @@ export default function Register() {
   const handleapprove3 = () => {
     async function newSmartWallet(wallet: string) {
       try {
-        const response = await fetch("http://localhost:3005/smartwallet/run", {
+        const response = await fetch("https://api.keywise.com.ar/smartwallet/run", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
